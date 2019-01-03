@@ -1,5 +1,5 @@
 package ch01;
-public class Test001{
+public class Test002{
 
     public static void main(String[] args){
 
@@ -15,19 +15,18 @@ public class Test001{
         System.out.println(0116);
         //16진수
         System.out.println(0X4E);
-        System.out.println(0x400);
         //부동소수점 출력
         //12.345
         //12.345
         System.out.println(12.345);
         //1.2345
-        System.out.println(12.345E1);
+        System.out.println(1.2345E1);
         
         //0.12345
-        System.out.println(12345E-5);
+        System.out.println(0.12345E2);
         
         //123.45
-        System.out.println(12345E-2);
+        System.out.println(123.45E-1);
         
         //
         //논리값 출력

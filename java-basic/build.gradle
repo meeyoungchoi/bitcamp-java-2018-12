@@ -8,7 +8,7 @@ plugins {
 
 //자바 프로그램에서 사용하는 외부 라이브러리의 저장소
 repositories {
-    
+   
     jcenter() //jcenter에서 라이브러리를 다운로드 받는다.
 }
 
