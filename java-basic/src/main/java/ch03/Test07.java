@@ -1,4 +1,4 @@
-// 키보드로 입력한 값을 받기
+// 키보드로 입력한 값을 받기-한줄의 문자열 읽기
 package ch03;
 
 public class Test07 {
@@ -19,7 +19,9 @@ public class Test07 {
     
     
     System.out.println("나이를 입력하세요:");
-    java.lang.String age=keyboard.nextLine();//입력이 완료될때까지 다음라인을 실행하지 않는다(blocking)
+    String age=keyboard.nextLine();//입력이 완료될때까지 다음라인을 실행하지 않는다(blocking)
+    //java.lang 패키지의 멤버를 사용할 때는 
+    //패키지 이름을 적지 않아도 된다.
     //enter를 처야 변수에 값이 들어간다.
     //키보드로부터 입력된 값이 콘솔창에 보여지고 그 값이 nextLine()으로 보내진다.
     
