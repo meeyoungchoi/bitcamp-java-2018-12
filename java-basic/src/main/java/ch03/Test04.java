@@ -7,25 +7,32 @@ public class Test04 {
     
     //자바 기본 타입의 변수immytable(불변)
     
-    int a=100;
-    int b=a;
-    System.out.printf("%d, %d \n",a,b);
+    //int a=100;
+    //int b=a;
+    //System.out.printf("%d, %d \n",a,b);
     
-    a=200;
+    //a=200;
    
     
-    System.out.printf("%d, %d \n",a,b);
+    //System.out.printf("%d, %d \n",a,b);
     
     //100=20;//컴파일 오류 발생
     //l-value는 반드시 메모리여야 한다.
     //100=a;//컴파일 오류
     
     
-    a=300; //r-value는 리터럴 가능하다.
-    a=b; //r-value는 변수 가능하다.
+   // a=300; //r-value는 리터럴 가능하다.
+   // a=b; //r-value는 변수 가능하다.
     //의미: 변수의 값을 왼쪽 변수에 저장하라는 의미이다.
     
     
+    int x=50;//x가 l-value이므로 메모리가 된다.
+    int z=100;
+    System.out.println(x);
+    System.out.println(z);
+    System.out.printf("x의 값:%d\n",x);
+    System.out.printf("y의 값:%d\n",z);
+    System.out.printf("%d, %d",x,z);
 
   }
 
