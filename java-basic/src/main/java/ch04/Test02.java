@@ -16,6 +16,9 @@ public class Test02 {
     //System.out.println("hello," *5);// 컴파일 오류
     
     System.out.println(true && true);
+    //&&: 이 연산자는 왼쪽과 오른쪽 두개가 모두 참일때 참이 나오고
+    //둘중 하나라도 거짓이면 거짓이 나온다.
+    // &&이 연산자 사이에는 true냐 false냐를 판달할수 있는 식이 오거나 boolean값 즉, true 또는 false 의 불린값도 들어갈수 있다.
     //System.out.println(10 && 10); //컴파일 오류
     //대입연산자는 데이터 타입에 따라서 사용여부가 결정된다.
   }

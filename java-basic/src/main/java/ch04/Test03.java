@@ -10,6 +10,7 @@ public class Test03 {
     //int 와 int의 연산 결과는 int 이다.
     //r변수에 값을 저장하기 전에 이미 결과는 2이다.
     
+    //System.out.pri
     //해결책
     //두 개의 정수 값을 제대로 float으로 계산하고 싶다면 형변환 하라
     //형변환?
@@ -31,12 +32,13 @@ public class Test03 {
     //당연히 그 결과는 float 타입이다.
     System.out.println(r2);
     
-    //타입이 다른 경우 연산을 수행할 수 없다.
+    //타입이 다른 경우 연산을 수행할 수 없다. && true);
+    //System.out.pri
     //반드시 계산을 수행하는 피연산자의 타입이 같아야 한다.
     //다르다면 내부적으로 두 피연산자의 값을 같은 타입으로 만든 후에 계산을 수행한다.
     //즉 개발자가 지시하지 않아도 내부적으로 같은 타입으로 만드는 것을
     //암시적 형변환이라고 한다.
-    
+    System.out.println("=====================================");
     float r3=5/(float)2;
     System.out.println(r3);
     
@@ -54,18 +56,23 @@ public class Test03 {
     short s2=30;
     //short s3=s1+s2;//위와같다. 계산하기 전에 int임시메모리에 값이 저장된다. 컴파일 오류
     int x2=s1+s2;
+    System.out.println("=================");
+    System.out.println(x2);
     
     char c1=20;
     char c2=30;
    // char c3=c1+c2; //컴파일 오류
     int x3=c1+c2;
+    System.out.println("=================");
+    System.out.println(x3);
     
-    
-    
+    //char, short byte는 무조건 int로 형변환한 다음에 계산해야 한다.
     int i1=100;
     float f1=200.5f;
     //int i2=i1+f1;//컴파일 오류
     float f2=i1+f1;
+    System.out.println("========");
+    System.out.println(f2);
     
     //주의
     //
@@ -77,7 +84,7 @@ public class Test03 {
    //계산결과를 합쳐야 할때는 무조건 double을 사용한다.
    //c:운영체제가 몇비트 냐에 따라 int의 바이트가 달라진다.
    //자바는 운영체제에 상관없다.
-   
+   System.out.println("==========================");
    System.out.println(d1);
      //해결책
    //계산하기 전에 더 큰 타입으로 형변환 해라
@@ -85,6 +92,7 @@ public class Test03 {
    //그런데 출력 결과를 보면 예상 결과와 다르게 나온다.
    //float을 double로 형변환 할때 오차가 이미 생긴다.
    //부동소수점을 다룰 때 생기는 오차이다. 개발자가 제어할 수 없다.
+   System.out.println("=====================");
    System.out.println(d2);
     
   
@@ -93,7 +101,9 @@ public class Test03 {
    //아얘 처음부터 double에 저장해 놓고 계산하라
    double d7=9876.543;
    double d8=12.34567;
-   double d9=d7+ d8;
+   double d9=d7+ d8;//에 수행한다.
+  // *자바의 최소 연산 단위는 int이다.
+   System.out.println("====================");
    System.out.println(d9);
   }
 
@@ -102,9 +112,11 @@ public class Test03 {
 
 /***
  * 암시적 형변환의 규칙
- * 서로 다른 타입과 연산을 수행한다면 다음 규칙에 따라 오른쪽 타입으로 자동 현변환을 수행한다.
+ * 서로 다른 타입과 연산을 수행한다면 다음 규칙에 따라 오른쪽 에 수행한다.
+ *자바의 최소 연산 단위는 int이다.타입으로 자동 현변환을 수행한다.
  * byte(음수가 있는 2바이트), short(음수가 없는 2바이트)=>int=>long=>float=>double
- * long이 float으로 바뀔때 위험하다.
+ * long이 float으로 바뀔때 위험하다.에 수행한다.
+ *자바의 최소 연산 단위는 int이다.
  * 
  * byte + short + char - float + long + int + double
  *(int) + (int): int 임시메모리가 생성되고 byte 값이 저장된다.

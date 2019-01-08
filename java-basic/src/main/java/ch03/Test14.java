@@ -4,26 +4,26 @@ package ch03;
 public class Test14 {
 
   public static void main(String[] args) {
-    //값을 담고 있는 메모리:인스턴스
-    //인스턴스 주소를 담고 있는 메모리:레퍼런스
+
     
    
     
     //1.
+    //int 타입의 배열에 arr1이라는 레퍼런스 변수를 선어하고 그 배열에 값을 초기화 한것이다.
     int[] arr1= {101, 102, 103, 104, 105};
-    
+    //                   500
     //2.
     int[] arr2= {80,81,82,83,84};
    
      
-    arr2=arr1;
-    System.out.printf("%d, %d\n",arr1[1], arr2[1]);
+    arr2=arr1;//arr1이라는 변수를 arr2에 대입한것이다.
+    System.out.printf("%d, %d\n",arr1[1], arr2[1]); //결과값 arr1[1]=100 arr2[1]=100
     //arr2에 저장되었던 배열 주소는 잃어 버려 더이상 그 배열을 사용할 수 없다.
     //이렇게 주소를 잃어버려 사용할수 없는 메모리를 garbage라고 부른다.
     
-    arr1[1]=500;
+    arr1[1]=500; //arr1변수의 1번째 인덱스의 값을 500이라고 대입했다.
     
-    //arr1이나 arr2모두 같은 배열 인스턴스를 가리키기 때문에 
+    //arr1이나 arr2모두 같은 배열 인스턴스(같은 주소값을 가리키기 때문에)를 가리키기 때문에 
     System.out.printf("%d, %d\n",arr1[1], arr2[1]);
     
    

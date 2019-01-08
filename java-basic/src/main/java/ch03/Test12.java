@@ -17,7 +17,8 @@ public class Test12 {
    
     //변수의 들어 있는 값의 합계를 구해 보자
     int arr1[];//c언어 스타일도 사용할 수 있다.
-    int sum1;
+    //arr1이라는 변수를 가지는 int 타입의 배열 선언
+    int sum1;//sum1이라는 변수를 선언
     sum1=a1+a2+a3+a4+a5;
     arr1=new int[5];
     arr1[0]=100;
@@ -28,9 +29,14 @@ public class Test12 {
     
     //배열 변수에 들어 있는 값의 합계 구하기
     int sum2=0;
+    //int item이거는 그 배열변수의 인덱스에 들어있는 값
+    //그래서 배열의 값을 더할때는 for문을 사용한다
+    //for(그 배열 변수의 인덱스에 들어있는 값 : 배열변수(레퍼런스 변수))
     for(int item:arr1) {
       sum2=sum2+item;
     }
+    
+    System.out.println(sum2);
     
     //어? 배열 보다 위에 있는 코드가 편한데요?
     //=>만명의 국어 점수를 담을 변수를 선언해 보세요!
