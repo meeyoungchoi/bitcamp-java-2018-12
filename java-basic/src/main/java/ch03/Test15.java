@@ -1,7 +1,7 @@
 // 키보드로 입력한 값을 받기-토큰 단위로 문자열 읽기
 package ch03;
 
-public class Test11_1 {
+public class Test15 {
 
   public static void main(String[] args) {
   
