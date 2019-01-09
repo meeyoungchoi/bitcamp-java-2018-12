@@ -26,6 +26,9 @@ public class Test10 {
     //논리연산자의 피연산자 값은 반드시 true 또는 false 여야 한다.
     //System.out.println(1 && 1);//컴파일 오류
     
+    //!(not) 논리 연산자
+    System.out.println(!true);
+    System.out.println(!false);
     
   }
 

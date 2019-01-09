@@ -1,86 +1,100 @@
 
 package bitcamp.lms;
 
-import java.util.Date;
+
 
 public class App2 {
     
 
     public static void main(String[] args) {
-     
-      java.util.Scanner keyboard=new java.util.Scanner(System.in);
       
+      java.util.Scanner keyboard=new java.util.Scanner(System.in);
+      java.util.Date today = new java.util.Date();
+      
+      int i=0;
+      
+      int[] number=new int[10];
+      String[] name=new String[10];
+      String[] email=new String[10];
+      int[] secret=new int[10];
+      String[] photo=new String[10];
+      String[] tel=new String[10];
+
+      
+    
+      
+      while(i < 10) {
      //번호? 1
       System.out.printf("번호?");
-      int number=keyboard.nextInt();
-      keyboard.nextLine();
+      number[i] = Integer.parseInt(keyboard.nextLine());
+ 
       
       //이름? 홍길동
       System.out.printf("이름?");
-      String name=keyboard.nextLine();
+      name[i]=keyboard.nextLine();
       
     //이메일? hong@test.com
       System.out.printf("이메일?");
-      String email=keyboard.nextLine();
-      
+      email[i]=keyboard.nextLine();
+
       //암호? 1111
       System.out.printf("암호?");
-      int secret=keyboard.nextInt();
-      keyboard.nextLine();
+      secret[i]=Integer.parseInt(keyboard.nextLine());
+  
       
       //사진? hong.png
       System.out.printf("사진?");
-      String photo=keyboard.nextLine();
+      photo[i]=keyboard.nextLine();
       //
       //전화? 1111-2222
       System.out.printf("전화?");
-      String tel=keyboard.nextLine();
+      tel[i]=keyboard.nextLine();
       
-      Date registeredDate=new Date(System.currentTimeMillis());
-      //현재 시점까지 지나온 년 월 일 시 분초를 리턴한다.
-      
-      System.out.printf("가입일?");
-      String come=keyboard.nextLine();
+
       
       
-      
+      i++;
+
+      System.out.printf("\n계속입력하시겠습니까?(y/n)");
+      String input=keyboard.nextLine();
       System.out.println();
-     
-      //번호: 1
-       
-      System.out.printf("번호? %d\n",number);
+      if (!input.equalsIgnoreCase("y") && !input.equals(" ")) {
+        break;
+        
+        }     
+      }
       
-      //int num=keyboard.nextInt();
-      //keyboard.nextLine();
+        int j = 0;
+        while(j < i) {
+          
+          System.out.printf("%d, ",number[j]);
+          System.out.printf("%s, ", name[j]);
+          System.out.printf("%s, ", email[j]);
+          System.out.printf("%s,", tel[j]);
+          System.out.printf("%1$tY-%1$tm-%1$td\n", today);
+          
+          j++;
+           }
+     }
       
-      //이름: 홍길동
-      System.out.printf("이름? %s\n",name);
-     // String name1=keyboard.nextLine();
-      
-      //이메일: hong@test.com
-      System.out.printf("이메일:%s\n",email);
-      //String email1=keyboard.nextLine();
-      
-      //암호: 1111
-      System.out.printf("암호:%d\n",secret);
-      //int secret1=keyboard.nextInt();
-     // keyboard.nextLine();
-      
-      //사진: hong.png
-      System.out.printf("사진: %s\n",photo);
-     // String photo=keyboard.nextLine();
-      
-      //전화: 1111-2222
-      System.out.printf("전화:%s\n",tel);
-      //String tel=keyboard.nextLine();
-      
-      //가입일: 2019-01-01
-      System.out.printf("가입일:%s",come);
-     // String come=keyboard.nextLine();
+ }
+    
+    
+
      
       
-    }
-}
+     
+     
+
+     
+            
+    
+    
+      
+      
+      
+   
+
 
 
 /**
