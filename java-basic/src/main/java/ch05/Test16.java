@@ -13,7 +13,7 @@ public class Test16 {
     for (String name : names) {
    
       //배열을 꺼내서 name에 담아준다.
-        System.out.print(name + " ");
+        System.out.print(name + " ");//홍길동 임꺽정 유관순 안중근 윤봉길 김구
         }
      
     System.out.println();
@@ -25,7 +25,8 @@ public class Test16 {
     list.add("유관순");
     
     for (String name : list) {
-      System.out.println(name + " ");
+      System.out.println(name + " ");//list라는 컬렉션에 담겨있는 name변수의 요소를 출력한다.
+                                          //홍길동, 임꺽정, 유관순
     }
     System.out.println();
     

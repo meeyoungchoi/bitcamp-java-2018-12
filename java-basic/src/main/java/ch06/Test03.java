@@ -12,10 +12,10 @@ public class Test03 {
    // i = m1(); //리턴 값의 타입과 변수의 타입이 맞지 않다.=>컴파일 오류
    String s;
    s=m1(); //ok
-   System.out.println(s);
+   System.out.println(s);//홍길동
    
    i=m2();
-   System.out.println(i);
+   System.out.println(i);//100
    
    //리턴 값을 사용할 일이 없다면 메서드 호출할 때 받지 않아도 된다.
    m1();

@@ -10,14 +10,14 @@ public class Test05 {
     result=plus(result, 5);
     System.out.println(result);
     
-    result=plus(plus(plus(2, 3), 4), 5);//가장 안쪽 괄호부터 먼저 실행(메서드 중점 호출)
+    result=plus(plus(plus(2, 3), 4), 5);//가장 안쪽 괄호부터 먼저 실행(메서드 중점 호출)  결과:14
     //result=plus(plus(5,4),5);
     //result=plus(9,5);
     //result=14;
     //
     System.out.println(result);
     
-    System.out.printf("100 + 200 =%d\n", plus(100 , 200));
+    System.out.printf("100 + 200 =%d\n", plus(100 , 200));//300
   }
     
   

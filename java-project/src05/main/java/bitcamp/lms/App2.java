@@ -61,8 +61,8 @@ public class App2 {
       if (!input.equalsIgnoreCase("y") && !input.equals(" ")) {
         break;
         
-        }     
-      }
+        }//if문 종료     
+      }//while문 종료
       
         int j = 0;
         while(j < i) {

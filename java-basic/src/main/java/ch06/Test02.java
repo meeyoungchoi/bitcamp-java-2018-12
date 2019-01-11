@@ -39,6 +39,9 @@ public class Test02 {
     static void m1(String name, int age) {
       System.out.printf("이름: %s\n",name);
       System.out.printf("나이: %s\n", age);
+      //홍길동,20
+      //임꺽정, 30
+      //유관순, 59
     }
     
 

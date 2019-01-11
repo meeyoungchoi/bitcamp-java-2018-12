@@ -22,7 +22,7 @@ public class Test08 {
       for(int i=0; i<value.length; i++) {
         sum += value[i];
       }
-      System.out.printf("%s님의 총점은 %d입니다.\n", name, sum);
+      System.out.printf("%s님의 총점은 %d입니다.\n", name, sum); //홍길동님의 총점은 290입니다. 임꺽정 유관순
     }
     
     
@@ -41,15 +41,14 @@ public class Test08 {
       for(int i=0; i<value.length; i++) {
         sum += value[i];
       }
-      System.out.printf("%s님의 총점은 %d입니다.\n", name, sum);
+      System.out.printf("%s님의 총점은 %d입니다.\n", name, sum);//홍길동님의 총점은 290입니다.  임꺽정님의 총점은 0입니다. 유관순님의 총점은 400입니다.
     }
     
     
   //여러개의 배열을 파라미터의 값으로 넘길 수 있다.
     static void compute4(int[] value, String[] name ) {
-      System.out.printf("%s님의 총점은 %d입니다.\n", name, value);
+     //홍길동님의 총점은 100점입니다. 임꺽정님의 총점은 90입니다. 유관순님의 총점은 80입니다.
       for(int i=0; i<value.length; i++) {
-        System.out.printf("%s 님의 점수는 %d입니다.",name, value);
         
       }
 

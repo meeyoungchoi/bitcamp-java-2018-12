@@ -9,11 +9,11 @@ public class Test11 {
   public static void main(String[] args) {
     int i=0;
     do {
-     System.out.print(++i);//전위연산자 활용
-      System.out.print(" , ");
+     System.out.print(++i);//전위연산자 활용 //결과:1
+      System.out.print(" , ");//?
       }
     while (i < 10);
-   System.out.println();
+   System.out.println();//결과:1, 2, 3, 4, 5, 6, 7, 8, 9,10
    
  
     }

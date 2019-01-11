@@ -9,7 +9,7 @@ public class Test09 {
    System.out.println(value);//main에서 실행한 value
    
    //  100
-   m1(value + 15);
+   m1(value + 15); //결과:0
    System.out.println(value);
    
    m1(value + 15);

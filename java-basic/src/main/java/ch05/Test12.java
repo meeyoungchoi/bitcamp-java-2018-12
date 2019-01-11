@@ -9,9 +9,9 @@ public class Test12 {
   public static void main(String[] args) {
     
     for (int i=1; i <= 10; i++) {
-      System.out.println(i + " ");
+      System.out.printf(i + " "); //1, 2, 3, 4, 5, 6, 7, 8, 9, 10
       System.out.println();
-      i=200;// 컴파일 오류 for문 안에 선언된 변수는 for블록을 벗어나면 제거된다.
+      //i=200;// 컴파일 오류 for문 안에 선언된 변수는 for블록을 벗어나면 제거된다.
       
       //실행순서
       //1.변수초기화 int i=1
@@ -24,7 +24,7 @@ public class Test12 {
     //그래서 다음 문장에서 i변수를 선언할 수있다.
     int i=1;
     for(; i <= 10; i++)
-      System.out.println(i + " ");
+      System.out.println(i + " ");//1,2,3,4,5,6,7,8,9,10
        System.out.println();
     }
   

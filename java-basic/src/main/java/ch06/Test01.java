@@ -6,7 +6,7 @@ public class Test01 {
   public static void main(String[] args) {
       //메서드 사용
     // 특정 기능을 수행하는 명령어를 모야두고 이름을 붙인것이 메서드이다.
-    // 그 모야둔 명령어 블록을 실행하는 것을 "메서드 호출(method call)"이라고 한다.
+    // 그 모야둔 메서드 명령어 블록을 실행하는 것을 "메서드 호출(method call)"이라고 한다.
     //문법
     //메서드명();   <== 값을 받지 않는 메서드라면
     //메서드명(값1, 값2, ...); 값을 받는 메서드라면, 값을 주지 않으면 오류가 발생
@@ -34,7 +34,7 @@ public class Test01 {
   //메서드 블록 : 메서드 몸체(method body)
     
     static void m1() {
-      System.out.println("Hello!");
+      System.out.println("Hello!");//m1() 메서드로 가서 "hello"출력
     }
     
 

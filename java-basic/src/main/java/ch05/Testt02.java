@@ -8,7 +8,7 @@ public class Testt02 {
     
    if (age >= 20)
      
-     System.out.println("성인입니다.");
+     System.out.println("성인입니다."); //결과: 성인
    else
      System.out.println("미성년입니다.");
   
