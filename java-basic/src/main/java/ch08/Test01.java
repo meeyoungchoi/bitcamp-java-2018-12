@@ -14,14 +14,15 @@ class My1 {
   //클래스 필드 사용하려면 클래스명.필드명=값;
   //인스턴스 필드를 사용할때는 레퍼런스(인스턴스주소).필드명=값;
   
-  static String manager = "관리자";
-  static String member = "회원";
-  static String guest = "손님";
+  
+  static String manager = "관리자"; //클래스 멤버 선언 static 데이터타입 변수명
+  static String member = "회원"; //클래스 멤버 선언
+  static String guest = "손님"; //클래스 멤버 선언
   
   //new 명령을 실행할 대 힙 메모리에 생성되는 변수이다.
   //이런 변수를 "인스턴스 필드" 라고 부른다.
-  String name;
-  int age;
+  String name; //인스턴스 팔드
+  int age;    //인스턴스 팔드
   String userType;
   
 }
@@ -30,8 +31,8 @@ public class Test01 {
   public static void main(String[] args) {
    
     
-    My1 obj1 = new My1();
-    obj1.name = "홍길동";//인스턴스 필드 사용
+    My1 obj1 = new My1();//obj1: 레퍼런스
+    obj1.name = "홍길동";//인스턴스 필드 사용 => 레퍼런스.필드명 = 값
     obj1.age = 20;
     obj1.userType = My1.guest;
     
