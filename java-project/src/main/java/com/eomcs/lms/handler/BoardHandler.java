@@ -5,23 +5,22 @@ import java.sql.Date;
 import java.util.Scanner;
  public class BoardHandler {
     
- public static Scanner keyboard ;
-  
  static final int LENGTH = 10;
-  
- static Board[] boards = new Board[LENGTH];
- static int boardIdx = 0;
+ //뒤에 3개가 인스턴스 필드
+ public Scanner keyboard ;
+ Board[] boards = new Board[LENGTH];
+ int boardIdx = 0;
   
 
-  public static void listBoard() {
+  public void listBoard() {
     for (int j = 0; j <  boardIdx; j++) {
-      System.out.printf("%d, %s, %s, %d", boards[j].no, boards[j].contents
-          ,boards[j].createdDate, boards[j].viewCount);
+      System.out.printf("%d, %s, %s, %d\n", this.boards[j].no, this.boards[j].contents
+          ,this.boards[j].createdDate, this.boards[j].viewCount);
       
     }
    }
   
-  public static void addBoard() {
+  public void addBoard() {
     
     Board board = new Board();
     
@@ -35,8 +34,9 @@ import java.util.Scanner;
     
     board.createdDate = new Date(System.currentTimeMillis());
     
-    boards[boardIdx] = board;
-    boardIdx++;
+    //boards[boardIdx]:배열이다.
+    this.boards[boardIdx] = board;
+    this.boardIdx++;
   }
   
   

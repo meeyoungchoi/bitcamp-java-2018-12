@@ -18,11 +18,11 @@ public class App {
     MemberHandler memberhandler = new MemberHandler();
     MemberHandler.keyboard = keyboard;
     
-    BoardHandler boardhandler = new BoardHandler();
-    BoardHandler.keyboard = keyboard;
+    BoardHandler board1 = new BoardHandler();
+    board1.keyboard = keyboard;
     
-    BoardHandler2 boardhandler2 = new BoardHandler2();
-    BoardHandler2.keyboard = keyboard;
+    BoardHandler2 board2 = new BoardHandler2();
+    board2.keyboard = keyboard;
  
     
     while (true) {
@@ -39,13 +39,13 @@ public class App {
       } else if (command.equals("/member/list")) {
         MemberHandler.listMember();
       } else if (command.equals("/board/add")) {
-        BoardHandler.addBoard();
+        board1.addBoard();
       } else if (command.equals("/board/list")) {
-        BoardHandler.listBoard();
+        board1.listBoard();
       } else if (command.equals("/board2/add")) {
-        boardhandler2.addBoard();
+        board2.addBoard();
       }  else if (command.equals("/board2/list")) {
-        boardhandler2.listBoard();
+        board2.listBoard();
       }
       else if (command.equals("quit")) {
         System.out.println("안녕!");
@@ -57,7 +57,7 @@ public class App {
       
       System.out.println(); // 결과 출력 후 빈 줄 출력
     }
-
+   
     keyboard.close();
 
     }

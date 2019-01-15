@@ -14,7 +14,8 @@ public class BoardHandler2 {
   
   public  void listBoard() {
     for (int j = 0; j < this.boardIdx; j++) {
-      System.out.printf("%d, %s", boards[j].no, boards[j].contents);
+      System.out.printf("%d, %s, %s, %d\n", boards[j].no, boards[j].contents,
+          boards[j].createdDate, boards[j].viewCount);
       
     }
    }
@@ -32,6 +33,8 @@ public class BoardHandler2 {
     board.viewCount = 0;
     
     board.createdDate = new Date(System.currentTimeMillis());
+    
+    System.out.printf("저장하였습니다.\n");
     
     this.boards[boardIdx] = board;
     this.boardIdx++;
