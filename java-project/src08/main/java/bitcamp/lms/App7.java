@@ -24,12 +24,15 @@ public class App7 {
       //new를 사용해서 Lesson()메모리를 생성한다.(인스턴스)
 
       System.out.print("번호를 입력하세요:");
+      //lesson이라는 인스턴스에 값을 넣었다(레퍼런스.변수)
       lesson.number = Integer.parseInt(keyboard.nextLine());
 
       System.out.print("수업명:");
+      //lesson이라는 인스턴스에 name이라는 변수에 값을 넣었다.
       lesson.name = keyboard.nextLine();
     
       System.out.print("수업내용:");
+      //lesson이라는 인스턴스에 content라는 변수에 값을 넣었다.
       lesson.content = keyboard.nextLine();
     
       System.out.print("시작일? ");
@@ -46,6 +49,7 @@ public class App7 {
       lesson.study = keyboard.nextLine(); 
     
        lessons[index] = lesson;
+       //인스턴스가 클래스의 인스턴스의 주소를 저
       
       index++;
       

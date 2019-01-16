@@ -2,7 +2,7 @@
 package ch10;
 
 class Monitor3 {
- 
+  //인스턴스 필드
   int bright;//밝기0 ~ 100
   int contrast;//명암(0 ~ 100)
   int widthRes;//해상도 너비

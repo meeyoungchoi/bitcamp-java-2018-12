@@ -13,6 +13,7 @@ public class Test5 {
     float aver;
     
   }
+  //16.위의 클래스 선언한거에서 static을 없애면 
  
 
  
@@ -20,13 +21,30 @@ public class Test5 {
    
     //1. 성적 데이터를 저장할 변수 선언
    /* String name = "강강강";
-    int kor = 100;
+    int kor = 100;//main에 만들어진 로컬변수는 자도응로 초기화 되지 않는다.
     int eng = 90;
     int math = 70;
     int sum = kor + eng + math;
     float aver = sum / 3;
     */
+    //12. int 배열선언
+    int[] values = new int[3];
+    //values:레퍼런스:배열의 주소를 담는 변수
     
+    //13. 레퍼런스 선언
+   // Score s1, s2, s3;
+    //14.score변수3개를 만드는 배열
+    Score[] scores = new Score[3];
+    //scores(레퍼런스): 배열의 주소 저장
+    //new Score[3]: Score 레퍼런스 3개를 생성한다.
+    
+    //15.scores라는 배열레퍼런스에 인스턴스 주소를 넣어준다.그러러면 new를 사용해야한다.
+    scores[0] = new Score();//new를 사용해서 레퍼런스에 인스턴스 주소를 넣어준다.
+    scores[1] = new Score();
+    scores[2] = new Score();
+    //그러면 이제 레퍼런스가 유효한 인스턴스 주소를 갖게 된다.
+    
+    System.out.println(scores[0].kor);
     //2. 성적 데이터 변수 출력
     //System.out.printf("%s, %d, %d, %d",name, kor, eng, math, sum, aver);
     
@@ -51,6 +69,7 @@ public class Test5 {
     System.out.println(s3.kor);
     System.out.println(s3.math);
     System.out.println(s3.eng);
+    //s3:인스턴스 필드(생성되는 즉시 0으로 초기화 된다.)
     
     //8. 메서드를 통해서 메모리 주소 전달
     printScore(s1);
@@ -70,6 +89,7 @@ public class Test5 {
   
       //9. 그 메모리 주소를 받을 변수를 파라미터로 선언
       static void printScore(Score s) {
+        
         s.sum = s.kor + s.eng + s.math;
         s.aver = s.sum / 3f;
         System.out.printf("%s, %d, %d, %d, %d, %f", s.name, s.kor, s.eng, s.math, s.sum, s.aver);
@@ -88,6 +108,11 @@ public class Test5 {
         s.aver = s.sum / 3f;
         
         return s;
+      }
+      
+      static void m1() {
+        
+        
       }
                                    
 
