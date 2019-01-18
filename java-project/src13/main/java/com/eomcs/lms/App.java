@@ -43,12 +43,6 @@ public class App {
       } else if (command.equals("/board2/list")) {
         boardHandler2.listBoard();
         
-      } else if (command.equals("/detail/lesson")) {
-        lessonHandler.detailLesson();
-      } else if (command.equals("/update/lesson")) {
-        lessonHandler.updateLesson();
-      } else if (command.equals("/delete/lesson")) {
-        lessonHandler.deleteLesson();
       } else if (command.equals("quit")) {
         System.out.println("안녕!");
         break;

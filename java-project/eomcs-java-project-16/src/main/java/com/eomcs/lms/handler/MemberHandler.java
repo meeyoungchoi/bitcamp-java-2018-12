@@ -2,20 +2,20 @@ package com.eomcs.lms.handler;
 import java.sql.Date;
 import java.util.Scanner;
 import com.eomcs.lms.domain.Member;
-import com.eomcs.util.ArrayList;
 
 public class MemberHandler {
   
   Scanner keyboard;
-  ArrayList<Member> list;
+  MemberList list;
   
   public MemberHandler(Scanner keyboard) {
     this.keyboard = keyboard;
-    this.list = new ArrayList<>(20);
+    this.list = new MemberList(20);
   }
   
   public void listMember() {
-    Member[] members = list.toArray(new Member[] {});
+    Member[] members = list.toArray();
+    
     for (Member member : members) {
       System.out.printf("%3d, %-4s, %-20s, %-15s, %s\n", 
           member.getNo(), member.getName(), 
