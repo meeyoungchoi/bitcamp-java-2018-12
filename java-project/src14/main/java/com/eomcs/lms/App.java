@@ -45,14 +45,11 @@ public class App {
         
       } else if (command.equals("/detail/lesson")) {
         lessonHandler.detailLesson();
-        
-      } else if (command.equals("/update/lesson")) {
-        lessonHandler.updatelesson();
-        
       } else if (command.equals("/delete/lesson")) {
-        lessonHandler.deletelesson();
-        
-      }  else if (command.equals("quit")) {
+        lessonHandler.deletelLesson();
+      } else if (command.equals("/update/lesson")) {
+        lessonHandler.updatelLesson();
+      } else if (command.equals("quit")) {
         System.out.println("안녕!");
         break;
         
