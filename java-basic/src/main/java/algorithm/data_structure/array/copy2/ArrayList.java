@@ -1,10 +1,5 @@
-package algorithm.data_structure.array;
+package algorithm.data_structure.array.copy2;
 
-<<<<<<< HEAD
-public class ArrayList {
-
-}
-=======
 import java.util.Arrays;
 
 @SuppressWarnings("unused")
@@ -117,4 +112,3 @@ public class ArrayList<E> {
 }
  
 
->>>>>>> 1721ea7e081129c5e6b911708d53730977281574
