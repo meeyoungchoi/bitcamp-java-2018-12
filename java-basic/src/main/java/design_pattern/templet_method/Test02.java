@@ -17,7 +17,8 @@ public class Test02 {
 	
 	Unit u2 = unitFactory.createUnit(UnitFactory.TRAINING_CENTER);
 	u2.build();
-	
+
+	u2.build();
 		
 	}
 
