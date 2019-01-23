@@ -1,4 +1,4 @@
-package algorithm.data_structure.array.LinkedList;
+package algorithm.data_structure.array.LinkedList.copy;
 
 public class LinkedList {
 	protected Node head;

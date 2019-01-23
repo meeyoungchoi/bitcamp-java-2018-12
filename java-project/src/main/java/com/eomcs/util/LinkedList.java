@@ -1,4 +1,6 @@
-package algorithm.data_structure.array.LinkedList;
+package com.eomcs.util;
+
+import algorithm.data_structure.array.LinkedList.Node;
 
 public class LinkedList {
 	protected Node head;
@@ -179,3 +181,5 @@ public class LinkedList {
 		return old;
 	}
 }
+
+

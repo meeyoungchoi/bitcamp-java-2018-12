@@ -1,4 +1,4 @@
-package algorithm.data_structure.array.LinkedList;
+package algorithm.data_structure.array.LinkedList.copy;
 
 import static org.junit.Assert.*;
 
