@@ -1,4 +1,4 @@
-//다형성 - 오버라이딩을 하는 이유? 
+// 다형성 - 오버라이딩을 하는 이유? 
 package ch14.a;
 
 public class Test01 {
@@ -14,7 +14,7 @@ public class Test01 {
     
     score.compute();
     
-    System.out.printf("%d(%f)\n",score.getSum(), score.getAver());
+    System.out.printf("%d(%f)\n", score.getSum(), score.getAver());
 
   }
 

@@ -1,55 +1,48 @@
-
-//반복문을 배열과 결합해서 사용
-
+// 흐름제어문 - for 반복문 IV
 package ch05;
 
 public class Test15 {
-  
 
   public static void main(String[] args) {
     String[] names = {"홍길동", "임꺽정", "유관순", "안중근", "윤봉길", "김구"};
-//         i: 배열의 인덱스 번호    
-    for (String name : names) {//names:배열의이름, String name: names라는 배열에서 각각의 배열요소
-   
-        System.out.print(name + " ");//홍길동, 임꺽정, 유관순 안중근, 윤봉길, 김구
-        
-     
+    
+    // 배열을 처음부터 끝까지 반복할 때는 다음의 for 문을 사용하면 편리하다.
+    for (String name : names) {
+      System.out.print(name + " ");
     }
     System.out.println();
-      
-    for (int i =0; i < names.length; i+=2) {//i=i+2
-      
-        System.out.print(names[i] + " ");//[0]:홍길동 [2]:유관순 [4]:윤봉길
-        
-     
+    
+    // 컬렉션 객체 사용
+    java.util.ArrayList<String> list = new java.util.ArrayList<>();
+    list.add("홍길동");
+    list.add("임꺽정");
+    list.add("유관순");
+    
+    for (String name : list) {
+      System.out.print(name + " ");
     }
+    System.out.println();
   }
 }
 
 /*
- *for 반복문
- *배열과 함께 사용할때 유용하다.
- *
- *for(변수초기화; 조건; 변수증가문)
- * 문장1;
- * 
- * for(변수초기화; 조건; 변수증가문)
- * 문장1;
- * 
- * for(변)
- * 
- * 
- * 
- * 
- * *
- */
-       
-     
-   
-   
+# for (:)
+- 배열 전체를 반복하거나 컬렉션(collection) 객체 전체를 반복할 때 유용한다.
+- 배열의 일부만 반복할 수 없다.
+- 배열의 값을 다룰 때 인덱스를 사용할 필요가 없어 편리하다.
 
-   
-    
+  for (배열의 항목 값을 담을 변수 선언 : 배열, Collection 객체 등)
+    문장1;
+ */
+
+
+
+
+
+
+
+
+
 
 
 

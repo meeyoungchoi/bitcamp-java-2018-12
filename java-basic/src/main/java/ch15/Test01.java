@@ -1,8 +1,9 @@
-//Object 클래스 - 주요 메서드
+// Object 클래스 - 자바 최상위 클래스
 package ch15;
 
-
-class My2 {
+// 클래스를 정의할 때 수퍼 클래스를 지정하지 않으면 
+// 컴파일러는 자동으로 Object를 상속 받는다.
+class My1 /*extends Object*/ {
   
 }
 
@@ -10,31 +11,29 @@ public class Test01 {
 
   public static void main(String[] args) {
     
-  
-    My2 obj = new My2();
-    //object에서 상속 받은 메서드
-    //1.toString()
-    // - 클래스 정보를 간단히 출력한다.
-    // - 패키지명.클래스명@16진수해시값
-    // -예)ch15.My2@5fdef03a
+    // instanceof 연산자를 사용하여 해당 인스턴스가 Object 타입인지 확인해 보자.
+    // instanceof 연산자?
+    // => 레퍼런스가 가리키는 인스턴스가 지정한 클래스를 인스턴스 이거나 또는 조상으로 갖는지 검사한다.
+    My1 obj = new My1();
+    
+    System.out.println(obj instanceof My1);
+    //System.out.println(obj instanceof String);
+    System.out.println(obj instanceof Object);
+    
+    // Object를 조상으로 갖는다면 당연히 Object의 메서드를 사용할 수 있을 것이다.
     System.out.println(obj.toString());
-    //해시값?
-    // -인스턴스 마다 부여된 고유의 식별자 이다.
-    // -주의! 주소 아니다.
-    // -인스턴스가 같은지 검사할 때 사용할 수 있다.
-    // -toString()을 재정의하지 않고 원래 메서드를 그대로 사용하면
-    //무조건 인스턴스마다 새 해시 값이 부여된다.
+    System.out.println(obj.hashCode());
+    System.out.println(obj.equals("Hello"));
     
-    My2 obj2 = new My2();
-    My2 obj3 = new My2();
-    
-    if (obj2 == obj3) 
-      System.out.println("같다");
-    else 
-      System.out.println("다르다.");
-    
-   System.out.println(obj2.toString());
-   System.out.println(obj3.toString());//해시값이 다르게 나온다.
+    // 결론!
+    // => 자바의 모든 클래스는 Object의 자손이다.
   }
 
 }
+
+
+
+
+
+
+

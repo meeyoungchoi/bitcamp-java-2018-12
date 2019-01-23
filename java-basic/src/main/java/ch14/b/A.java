@@ -1,6 +1,7 @@
 package ch14.b;
 
 public class A {
+  
   void m1(int a) {
     System.out.println("A.m1()");
   }

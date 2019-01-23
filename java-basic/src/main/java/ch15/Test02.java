@@ -1,38 +1,48 @@
-//Object 클래스 - toString을 오버라이딩 할때
+// Object 클래스 - toString() 메서드에 대하여
 package ch15;
 
-class My3 {
-  String name;
-  int age;
+class My2 {
   
-  //개발을 하다 보면 인스턴스의 현재 값을 간단히 확인하고 싶을 경우가 있다.
-  //그런 경우 toString()을 오버라이딩 하라
-  //오버랑이딩(알트/)을 하지않으면 무조건 클래스명과 식별자가 나온다.
-  
-  @Override
-  public String toString() {
-    return "My3 [name=" + name + ", age=" + age + "]";
-  }
-  
-
-
 }
 
 public class Test02 {
-  public static void main(String[] args) {
-    My3 obj1 = new My3();
-    obj1.name = "홍길동";
-    obj1.age = 20;
-    System.out.println(obj1.toString());
-    
-    //println()의 파라미터 값으로 문자열을 넘겨주지 않으면 
-    //println() 내부에서 파라미터로 넘어온 객체에 대해 toString() 호출한 후
-    //그 리턴 값을 출력한다.
-    //따라서 그냉 객체(주소)를 넘겨줘도 된다.
-    System.out.println(obj1);//println()메서드안에서 toString을 호출한후 그 리턴 값을 출력한다.
 
+  public static void main(String[] args) {
     
+    My2 obj = new My2();
     
+    // Object에서 상속 받은 메서드 
+    //
+    // 1) toString()
+    //    - 클래스 정보를 간단히 출력한다.
+    //    - 패키지명.클래스명@16진수해시값
+    //    - 예) ch15.My1@1e81f4dc
+    //
+    System.out.println(obj.toString());
+    // 해시값?
+    // - 인스턴스 마다 부여된 고유의 식별자이다.
+    // - 주의! 주소 아니다!
+    // - 인스턴스가 같은지 검사할 때 사요할 수 있다.
+    // - toString()을 재정의하지 않고 원래 메서드를 그대로 사용하면
+    //   무조건 인스턴스마다 새 해시값이 부여된다.
+    
+    My2 obj2 = new My2();
+    My2 obj3 = new My2();
+    
+    if (obj2 == obj3)
+      System.out.println("같다");
+    else 
+      System.out.println("다르다");
+    
+    System.out.println(obj2.toString());
+    System.out.println(obj3.toString());
   }
 
 }
+
+
+
+
+
+
+

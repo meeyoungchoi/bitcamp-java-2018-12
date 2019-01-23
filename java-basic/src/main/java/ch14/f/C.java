@@ -1,6 +1,6 @@
 package ch14.f;
 
-public class C extends B{
+public class C extends B {
   
   @Override
   public void m1() {

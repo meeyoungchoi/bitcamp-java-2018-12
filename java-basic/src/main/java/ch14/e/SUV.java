@@ -6,9 +6,7 @@ public class SUV extends Sedan {
   
   @Override
   public void run() {
-    System.out.println("슝슝~~~~~~달린다.");
+    System.out.println("슝슝~~ 달린다!");
   }
-  
-
 
 }
