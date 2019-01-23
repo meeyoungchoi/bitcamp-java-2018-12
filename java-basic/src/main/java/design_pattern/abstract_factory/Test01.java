@@ -19,7 +19,7 @@ public class Test01 {
 		do {
 		System.out.print("종족을 선택하시요?(1:태란 2:프로토스 3:저그)");
 		type = keyboard.nextInt();
-		if (type > 0 && type < 4) {
+		if (type < 1 && type < 4) {
 			System.out.println("번호가 맞지 않습니다.");
 		}
 		break;
@@ -33,12 +33,12 @@ public class Test01 {
 			unitFactory  = new TerranUnitFactory();
 			break;
 		case 2:
-			System.out.println("태란족을 선택하셨습니다.");
-			unitFactory = new TerranUnitFactory();
+			System.out.println("프로토스족을 선택하셨습니다.");
+			unitFactory = new ProtosUnitFactory();
 			break;
 		case 3:
-			System.out.println("태란족을 선택하셨습니다.");
-			unitFactory = new TerranUnitFactory();
+			System.out.println("저그족을 선택하셨습니다.");
+			unitFactory = new ZugUnitFactory();
 			break;
 		}
 	
@@ -55,7 +55,6 @@ public class Test01 {
 		Unit u2 = unitFactory.createUnit(UnitFactory.TRAINING_CENTER);
 		u2.build();
 		
-		u2.build(); 
 	}
 	
 			

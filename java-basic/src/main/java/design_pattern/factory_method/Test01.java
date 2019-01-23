@@ -30,6 +30,8 @@ public class Test01 {
     c4.model = "소나타 골드";
     c4.cc = 1980;
     c4.sunroof = true;
+    
+   
   }
 
 }

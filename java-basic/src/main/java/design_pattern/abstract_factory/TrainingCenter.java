@@ -22,7 +22,7 @@ public class TrainingCenter extends Unit{
 
 	@Override
 	public void interio() {
-		System.out.println(this.area+ ":숙소 내부 침실을 꾸민다.");
+		System.out.println(this.name+ ":숙소 내부 침실을 꾸민다.");
 		
 	}
 
