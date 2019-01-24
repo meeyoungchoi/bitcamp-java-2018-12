@@ -10,17 +10,12 @@ class Car {
 	}
 	public Car() {
 		 this.model = "미정";
-		
 	}
 	
-	public void write() {
-		
-	}
-
 	public Car(String model) {
 		this.model = model;
 	}
-}
+}	
 //익명클래스의 예제를 위한 인터페이스
 interface Pen {
 	void write();
@@ -56,17 +51,17 @@ public class Test02 {
 	//new 인터페이스() {클래스 정의}
 	
 	//예1.
-	//Car  크래릇를 상속 받고, Car의 기본 생성자를 호출하는 익명 클래스 정의 및 객체 생성
+	//Car  크래스를 상속 받고, Car의 기본 생성자를 호출하는 익명 클래스 정의 및 객체 생성
 	//인스턴스를 생성할 때 수퍼 클래스인 Car의 기본 생성자를 호출한다.
 	//클래스를 정의하면서 동시에 인스턴스를 생성하고 있다.
 	//Car obj = new Car() {}
 	Car obj = new Car() {
-		@Override
+		@Override//이유?
 		public void run() {
 			System.out.println(this.model + "달려라! 달려라!");
 		}
 	};//new 명령은 인스턴스를 생성하는 명령이기 때문에 문장 끝에 세미콜론을 붙여야 한다.
-	obj.run();
+	obj.run();//왜?
 	
 	
 	//클래스 이름 다음에 오는 것이 수퍼 클래스의 생성자를 지정하는 문법이다.
@@ -81,25 +76,25 @@ public class Test02 {
 	//예3.
 	//인터페이스를 구현하여 익명 클래스를 만들기
 	//인터페이스를 지정하면 수퍼 클래스는 자동으로 Object 가 된다.
-	//그러면 호출할 생성자도 object 클래스의 생성자이어야 한다
+	//그러면 호출할 생성자도 object 클래스의 생성자이어야 한다=?
 	//pen obj3 = 300;
-	Pen obj3 = new Pen() {
-		@Override
+	Pen obj3 = new Pen() {//위에서 interface pen을 구현하였다. 인터페이스를 구현하였으므로 수퍼 클래스는 자동으로 Object가 되었다.
+		@Override//?
 		public void write() {
 			System.out.println("글 쓴다.");
 		}
 	};
-	obj3.write();
+	obj3.write();//?
 	}
 	
 	//
 	public static void m1() {
 		// 스태틱 
-		A obj = new A();
+		A obj = new A();//?
 		
 		//스태틱 멤버는 인스턴스 주소를 담는 this라는 
 		//
-		B  obj2;//
+		B  obj2;//?
 		//obj2 = new B(); //컴파일 오류
 		
 		//다른 로컬 

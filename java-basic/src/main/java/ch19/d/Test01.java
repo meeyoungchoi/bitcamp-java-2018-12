@@ -21,6 +21,12 @@ public class Test01 {
 		 // static nested class를 사용하면 
 		 p.category = Category.computer.mouse.bluetooth;
 		 
+		 p.category = Category.appliance.tv;
+		 //자바는 기본적으로 객체의 필드를 사용할때 .을 이용하여 지정한다.
+		 //그 하위 필드도 .을 이용하여 지정할 수 있다.
+		 //이런식으로 .을 이용하여 하위 필드를 지정하는 표기법을 ognl이라고 한다.
+		 //문법:객체.프로퍼티명.프로퍼티명.프로퍼티명 = 값;
+		 
 		 //
 		 //
 		

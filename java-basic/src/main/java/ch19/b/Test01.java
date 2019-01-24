@@ -4,12 +4,12 @@ package ch19.b;
 public class Test01 {
 
 	public static void main(String[] args) {
-		Product p = new Product();
-		p.maker = "비트컴퓨터";
+		Product p = new Product();//p 라는 인스턴스를 생성하였다?
+		p.maker = "비트컴퓨터";//?
 		 p.title = "비트마우스";
 		 p.price = 90000;
 		 
-		 //
+		 //Produect에 정의된 상수를 이용하여 분류를 지정한다.
 		 p.category = Product.COMPUTER_MOUSE;
 		 
 		 //문제점

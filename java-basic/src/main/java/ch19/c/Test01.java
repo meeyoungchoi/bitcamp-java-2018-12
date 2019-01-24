@@ -10,7 +10,8 @@ public class Test01 {
 		 p.price = 90000;
 		 
 		 //상수를 Category 클래스로 옯긴후에 사용하기
-		 p.category = Category.COMPUTER_MOUSE;
+		// p.category = Category.COMPUTER_MOUSE;
+		 p.category = Category.COMPUTER_MOUSE;//상수를 catogory 클래스로 옮긴후에 사용하기 
 		 
 		 //개선점
 		 //=>카테고리의 이름이 하나의 긴 변수명으로 되어있다.

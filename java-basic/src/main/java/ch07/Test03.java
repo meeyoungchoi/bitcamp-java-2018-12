@@ -66,10 +66,11 @@ public class Test03 {
     // 메서드에 새 데이터 타입으로 만든 메모리의 주소를 전달한다.
     // => 값이 아니라 메모리의 주소를 전달한다! "call by reference"
     printScore(s1); // 이전 예제처럼 여러 개의 값을 넘겨줄 필요가 없다. 아주 편리하다.
-    
+    System.out.println(s1.name);
     printScore(s2);
-    
+    System.out.println(s2.name);
     printScore(s3);
+    System.out.println(s3.name);
   }
   
   // 새 데이터 타입의 메모리 주소를 받을 변수를 파라미터로 선언한다.

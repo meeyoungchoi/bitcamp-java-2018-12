@@ -8,6 +8,9 @@ class My2 {
   static String guest = "손님";
   
   // 인스턴스 필드
+  /*String name;
+  int age;
+  String userType;*/
   String name;
   int age;
   String userType;

@@ -7,14 +7,27 @@ package ch07;
 //    보통은 한 파일에 한 클래스를 선얺나다.
 // => 패키지 멤버 클래스는 접근 권한이 있다면 누구든 사용할 수 있다.
 //
-class Score1 {
+/*class Score1 {
   String name; 
   int kor;
   int eng;
   int math;
   int sum;
   float aver;
+}*/
+class Score1 {
+	String name;
+	int kor;
+	int eng;
+	int math;
+	int sum;
+	float aver;
+	
 }
+//패키지 멤버 클래스: 단독으로 선언하는 클래스
+//패키지 멤버 클래스는 접근 권한이 있다면 누구든 사용할 수 있다.
+
+
 
 public class Test09 {
 
@@ -25,6 +38,7 @@ public class Test09 {
   // 스태틱 중첩 클래스(static nested class) = top level nested class 
   // => 이 클래스를 소유하고 있는 클래스 뿐만 아니라 다른 클래스도 사용할 수 있다.
   //
+	//스태틱 중첩 클래스: 이 클래스를 소유하고 있는 클래스 뿐만 아니라 다른 클래스도 사용할 수 있다.
   static class Score2 {
     String name; 
     int kor;
@@ -44,6 +58,7 @@ public class Test09 {
     int sum;
     float aver;
   }
+  //논-스태틱 중첩 클래스: 특정 인스턴스에 종속된 클래스인 경우 논-스태틱 중첩 클래스로 정의하나.
   
   public static void main(String[] args) throws Exception {
     

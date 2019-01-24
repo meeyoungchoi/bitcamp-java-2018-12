@@ -1,20 +1,19 @@
+//제네릭 적용
 package com.eomcs.util;
 
-import algorithm.data_structure.array.LinkedList.LinkedList;
-import algorithm.data_structure.array.LinkedList.Node;
-
-//기존 기능을 활용하는 가장 쉬운 방법이 상속이다.
+//Queue가 보관하는 데이터 타입을 E라고 가정하자.
+//E라고 가정한 상태에서 코드를 작성한다.
 //
-public class Queue extends LinkedList{
+public class Queue<E> extends LinkedList<E>{
 
 	
-	public void offer(Object value) {
+	public void offer(E value) {
 		//상속 받은 메서드를 사용하여 값을 추가하라 
 		this.add(value);
 				
 	}
 	
-	public Object poll(int index, Object value) {
+	public Object E() {
 		//상속 받은 메서드를 사용하여 값을 꺼내라
 		return this.remove(0);
 		
