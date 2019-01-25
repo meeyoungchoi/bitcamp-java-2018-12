@@ -1,8 +1,8 @@
 package com.eomcs.lms.handler;
 import java.sql.Date;
-import java.util.List;
 import java.util.Scanner;
 import com.eomcs.lms.domain.Lesson;
+import com.eomcs.util.List;
 
 public class LessonHandler {
 
@@ -11,11 +11,13 @@ public class LessonHandler {
 
   public LessonHandler(Scanner keyboard, List<Lesson> list) {
     this.keyboard = keyboard;
-    this.list = list;
+    this.list = list;//
+   //this.list = new LinkedList<>();
+    
   }
 
   public void listLesson() {
-    Lesson[] lessons = list.toArray(new Lesson[0]);
+    Lesson[] lessons = list.toArray(new Lesson[] {} );
     for (Lesson lesson : lessons) {
       System.out.printf("%3d, %-15s, %10s ~ %10s, %4d\n", 
           lesson.getNo(), lesson.getTitle(), 

@@ -114,10 +114,7 @@ public class App {
         });
         
       } else if (command.equals("history2")) {
-        printCommandHistory(commandHistory2.iterator());
-        //printCommandHistory야 commandHistory2.iterator()이 값을 줄테니까 
-        // commandHistory2.iterator()에 맞게 
-        //printCommandHistory(Iterator<String> iterator)를 실행해
+        printCommandHistory2();
         
       } else {
         System.out.println("실행할 수 없는 명령입니다.");
@@ -129,42 +126,26 @@ public class App {
     keyboard.close();
   }
 
-  private static void printCommandHistory(Iterator<String> iterator) {//여기에 commandHistory,commandHistory2이거가 들어간다.
-	//()에 들어오는거가 Iterator<String> 타입의 commandHistory.iterator()라는 값이 들어온다.
-	  try {
-		int count = 0;
-		while (iterator.hasNext()) {
-			System.out.println(iterator.next());
-			if (++count % 5 == 0) {
-				System.out.print(":");
-				String input = keyboard.nextLine();
-				if (input.equalsIgnoreCase("q"))
-					break;
-			}
-		}
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
+  private static void printCommandHistory(Iterator iterator) {
+	
+	
 }
 
-/*private static void printCommandHistory() {
-    Iterator<String> iterator = commandHistory.iterator();//스택:commandHistory
-// iterator 이름을 가진 Iterator<String> 타입;
-// iterator라는 이름이 commandHistory.iterator()라는 값을 가진다.
-//iterator(): ()가 생성자다. 근데 값이 없는 생성자이다.(기본생성자이다.)
- 도구: iterator    
+private static void printCommandHistory() {
+    Iterator<String> iterator = commandHistory.iterator();
+    
     while (iterator.hasNext()) {
       System.out.println(iterator.next());
     }
   }
   
   private static void printCommandHistory2() {
-    Iterator<String> iterator = commandHistory2.iterator();//어레이디큐:commandHistory2
+    Iterator<String> iterator = commandHistory2.iterator();
     
     while (iterator.hasNext()) {
       System.out.println(iterator.next());
     }
-  }*/
+  }
 
   private static String prompt() {
     System.out.print("명령> ");

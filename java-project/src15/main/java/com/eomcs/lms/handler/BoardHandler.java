@@ -1,21 +1,41 @@
 package com.eomcs.lms.handler;
 import java.sql.Date;
-import java.util.List;
 import java.util.Scanner;
 import com.eomcs.lms.domain.Board;
+import com.eomcs.util.List;
 
 public class BoardHandler {
-  
+  //보드핸들러 입장에서는 
   Scanner keyboard;
   List<Board> list;
   
   public BoardHandler(Scanner keyboard, List<Board> list) {
+	  
     this.keyboard = keyboard;
     this.list = list;
+    //this.list = new LinkedList<>();
+    
+    //다음과 같이 이 클래스가 사용할 리스트 객체를 LinekdList로 결정해버리면 
+    //list 사용 규칙을 따르는 다른 객체로 쉽게 변경할 수 없다.
+    //다른  list 객체로 변경하려면 이 클래스의 생성자 코드를
+    //어떤 기능을 변경할 때마다 소스 코드를 변경하는 방식은 유지보수에 좋지 않다.
+    //해결책
+    //이 클래스으ㅔ서 어떤 list객체를 사용할 것인지 결정하지 말고
+    //이 클래스를 사요하는 쪽에서 결정하도록 유도하라
+    //즉 생성자에서 list객체를 준비하지 말고 파라미터로 주입 받아라
+    //이렇게 자기가 작업하는데 필요한 사용하는 도구를 의존객체(dependency)라 부른다.
+    //그리고 의존 객체를 자기가 생성하지 않고 외부로부터 주입받는 것을 
+    //의존 객체 주입(dependenct injection)이라고 부른다.
+    //
+    //이 클래스에서 의존 객체를 결정하지 말자
+   // this.list = new LinkedList<>();
+    //
+    
   }
   
   public void listBoard() {
-    Board[] boards = list.toArray(new Board[] {});
+	Board[] boards = new Board[list.size()];
+	 list.toArray(boards);
     for (Board board : boards) {
       System.out.printf("%3d, %-20s, %s, %d\n", 
           board.getNo(), board.getContents(), 
@@ -51,7 +71,7 @@ public class BoardHandler {
       return;
     }
 
-    Board board = list.get(index);
+    Board board = (Board) list.get(index);
 
     System.out.printf("내용: %s\n", board.getContents());
     System.out.printf("작성일: %s\n", board.getCreatedDate());
@@ -104,7 +124,7 @@ public class BoardHandler {
   
   private int indexOfBoard(int no) {
     for (int i = 0; i < list.size(); i++) {
-      Board b = list.get(i);
+      Board b = (Board) list.get(i);
       if (b.getNo() == no)
         return i;
     }

@@ -1,4 +1,4 @@
-package com.eomcs.util;
+package com.eomcs.util.copy;
 
 public class Stack<E> implements Cloneable {
 	
@@ -61,5 +61,10 @@ public class Stack<E> implements Cloneable {
 		}
 		//return (Stack<E>)super.clone();
 		return temp;
+	}
+
+	public Object iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
