@@ -1,4 +1,4 @@
-//제네릭 적용
+//list 사용규칙
 package com.eomcs.util;
 
 import java.lang.reflect.Array;
@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 //LinkedList에 보관되는 값의 타입을 E라고 가정한다.
 //E 타입 이라고 가정하고 코드를 작성한다.
 //E가 무슨 타입인지는 LinkedList
-public class LinkedList<E> {
+public class LinkedList<E> implements Cloneable ,List<E>{
 	protected Node<E> head;
 	protected Node<E> tail;
 	protected int size;
@@ -88,13 +88,23 @@ public class LinkedList<E> {
 		if (a.length >= size()) {
 			arr = a;
 		} else  {
-			arr = (T[]) Array.newInstance(a.getClass()
-					.getComponentType(), this.size());
+			arr = (T[]) Array.newInstance(
+					a.getClass()
+					.getComponentType(), 
+					this.size());
 		}
+		Node<E> cursor = head;
+		
+		int i = 0;
+		while (cursor != tail) {
+			arr[i++] = (T) cursor.value;
+			cursor = cursor.next;
+		}
+		
 		return arr;
 	}
 	
-	public Object set(int index, E value) {
+	public E set(int index, E value) {
 		if (index < 0 || index >= size )
 			return null;
 		
@@ -127,7 +137,6 @@ public class LinkedList<E> {
 		
 		//삽입할 위치에 있느 원래 노드를 찾는다.
 		Node<E> cursor = head;
-		
 		for (int i =1; i <= index; i++) {
 			cursor = cursor.next;
 		}
@@ -171,7 +180,6 @@ public class LinkedList<E> {
 		for (int i = 1; i <= index; i++ ) {
 			//cursor = 300;
 			cursor = cursor.next;
-			
 		}
 		
 		if (cursor.prev != null) {
@@ -181,15 +189,12 @@ public class LinkedList<E> {
 			head = cursor.next;
 		}
 		
-	
-
-		
 		//찾은 노드의 다음 노드가 이전 노드를 가리키게 한다.
 		cursor.next.prev = cursor.prev;
 		
 		//가비지 컬렉터를 효과적으로 계산할수 있도록 
 		//가비지가 된 객체는 다른 객체를 가리키지 않도록 한다.
-		Object old = cursor.value;
+		E old = cursor.value;
 		cursor.value = null;
 		cursor.prev = null;
 		cursor.next = null;
@@ -198,7 +203,7 @@ public class LinkedList<E> {
 		size--;
 		
 		//호출한 쪽에서 필요하면 사용하고 
-		return (E) old;
+		return old;
 	}
 	
 	//Node가 다루는 값의 타입을 제네릭(generic)으로 선언한다.

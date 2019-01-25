@@ -1,19 +1,19 @@
 package com.eomcs.lms.handler;
 import java.sql.Date;
 import java.util.Scanner;
-
 import com.eomcs.lms.domain.Lesson;
-import com.eomcs.util.ArrayList;
-import com.eomcs.util.LinkedList;
+import com.eomcs.util.List;
 
 public class LessonHandler {
 
   Scanner keyboard;
-  LinkedList<Lesson> list;
+  List<Lesson> list;
 
-  public LessonHandler(Scanner keyboard) {
+  public LessonHandler(Scanner keyboard, List<Lesson> list) {
     this.keyboard = keyboard;
-    this.list = new LinkedList<>();
+    this.list = list;//
+   //this.list = new LinkedList<>();
+    
   }
 
   public void listLesson() {

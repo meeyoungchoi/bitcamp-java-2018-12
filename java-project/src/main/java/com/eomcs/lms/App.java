@@ -4,6 +4,9 @@ import java.util.Scanner;
 import com.eomcs.lms.handler.BoardHandler;
 import com.eomcs.lms.handler.LessonHandler;
 import com.eomcs.lms.handler.MemberHandler;
+import com.eomcs.util.ArrayList;
+import com.eomcs.util.LinkedList;
+import com.eomcs.util.Queue;
 import com.eomcs.util.Stack;
 
 public class App {
@@ -13,21 +16,34 @@ public class App {
   //static Stack<String> commandHistory = new Stack<>();
   //사용자가 입력한 명령을 순서대로 담는다.
   static Stack<String> commandHistory = new Stack<>();
-  
+  static Queue <String> commandHistory2 = new Queue<>();
+
   public static void main(String[] args) {
-    
-    LessonHandler lessonHandler = new LessonHandler(keyboard);
-    MemberHandler memberHandler = new MemberHandler(keyboard);
-    BoardHandler boardHandler1 = new BoardHandler(keyboard);
-    BoardHandler boardHandler2 = new BoardHandler(keyboard);
-    
-    //사용자가 입력한 명령을 순서대로 담는다.
+	  //
+	  //
+	  //
+	 LessonHandler lessonHandler = new LessonHandler(keyboard, new ArrayList<>());
+	 MemberHandler memberHandler = new MemberHandler(keyboard, new ArrayList<>());
+	 BoardHandler boardHandler1 = new BoardHandler(keyboard, new LinkedList<>());
+	 BoardHandler boardHandler2 = new BoardHandler(keyboard, new LinkedList<>());
+	 
+//	  ArrayList<Lesson> lessonList = new ArrayList<>();
+	 //ArrayList<Lesson> memberList = new ArrayList<>();
+	  //LinkedList<Board> boardList2 = new LinkedList<>();
+	  //LinkedList<Board> boardList1 = new LinkedList<>();
+	  
+	  //
+	  //
+	  //
    
     
+
     while (true) {
-      String command = prompt();
-      
-      commandHistory.push(command);
+        String command = prompt();
+        commandHistory.push(command);
+        
+        //사용자가 입력한 명령을 큐에 보관한다.
+        commandHistory2.offer(command);
 
       if (command.equals("/lesson/add")) {
         lessonHandler.addLesson();
@@ -77,7 +93,7 @@ public class App {
       } else if (command.equals("/board2/add")) {
         boardHandler2.addBoard();
         
-      } else if (command.equals("/board2/list")) {
+      } else if (command.equals("/board2/litempst")) {
         boardHandler2.listBoard();
         
       } else if (command.equals("/board2/detail")) {
@@ -86,7 +102,7 @@ public class App {
       } else if (command.equals("/board2/update")) {
         boardHandler2.updateBoard();
       
-      } else if (command.equals("/board2/delete")) {
+      } else if (command.equals("board2/delete" )) {
         boardHandler2.deleteBoard();
       
       } else if (command.equals("quit")) {
@@ -95,6 +111,8 @@ public class App {
         
       }  else if (command.equals("history")) {
           printCommandHistory();
+        } else if (command.equals("history2")) {
+          printCommandHistory2();
         }
       else {
         System.out.println("실행할 수 없는 명령입니다.");
@@ -106,16 +124,44 @@ public class App {
     keyboard.close();
   }
 
-  private static void printCommandHistory()  {
+  private static void printCommandHistory2() {
+	  try {
+			 //명령어가 보고낫된 스택에서 명령어를 꺼내기 전에 복제한다.
+			  Queue<String> temp = commandHistory2.clone();
+			  int count = 0;
+			    while (!temp.empty()) {
+			      System.out.println(temp.poll());
+			      if (++count % 5 == 0) {
+			    	  System.out.print(":");
+			    	  String input = keyboard.nextLine();
+			    	  if (input.equalsIgnoreCase("q"));
+			    	  break;
+			      }
+			   }
+	  }  catch ( Exception e) {
+			 e.printStackTrace();
+		  }
+		}
+	
+
+
+private static void printCommandHistory()  {
 
 	 try {
 		 //명령어가 보고낫된 스택에서 명령어를 꺼내기 전에 복제한다.
 		  Stack<String> temp = commandHistory.clone();
+		  int count = 0;
 		    while (!temp.empty()) {
 		      System.out.println(temp.pop());
+		      if (++count % 5 == 0) {
+		    	  System.out.print(":");
+		    	  String input = keyboard.nextLine();
+		    	  if (input.equalsIgnoreCase("q"));
+		    	  break;
+		      }
 		    }
 	 }
-	  catch ( CloneNotSupportedException e) {
+	  catch ( Exception e) {
 		 e.printStackTrace();
 	  }
 	 }
