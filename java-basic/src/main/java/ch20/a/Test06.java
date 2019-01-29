@@ -49,10 +49,10 @@ public class Test06 {
 
 		}
 		
-		String s1 = new String("aaa",20);
-		String s2 = new String("bbb", 40);
-		String s3 = new String("ccc",40);
-		String s4 = new String("bbb",30);
+		Student s1 = new Student("aaa",20);
+		Student s2 = new Student("bbb", 40);
+		Student s3 = new Student("ccc",40);
+		Student s4 = new Student("bbb",30);
 		
 		System.out.println(s2 == s4);
 		System.out.println(s2.equals(s4));

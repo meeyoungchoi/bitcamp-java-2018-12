@@ -2,6 +2,8 @@ package com.eomcs.lms.util;
 
 import java.util.Arrays;
 
+import com.eomcs.lms.domain.Lesson;
+
 public class ArrayList<E> {//ArrayList를 E 타입으로 다루겠다.
 
 	static final int DEFAULT_CAPACITY = 10;
@@ -22,7 +24,7 @@ public class ArrayList<E> {//ArrayList를 E 타입으로 다루겠다.
 	
 	@SuppressWarnings("unchecked")
 	public E[] toArray(E[] a) {//a의 의미? 파라미터
-		if (a.length < size) {//a.length의 의미? a변수의 length
+		if (a.length < size) {//a.length의 의미? a변수의length/그러니까 길이
 			return (E[]) Arrays.copyOf(list, size, a.getClass());//list배열로 size만큼 배열요소의 개수를 복사한다. / a.getClass()란? 객체가 속한 클래스의 정보를 담는 메서드
 				//E타입의 list배열로 size만큼의 배열요소의 개수를 복사해서 list배열이 속한 클래스로 리턴해라(즉, ArrayList클래스로 리턴해라)
 		}
@@ -32,6 +34,10 @@ public class ArrayList<E> {//ArrayList를 E 타입으로 다루겠다.
 				a[size] = null;//a변수의 배열요소값에 null을 저장한다.
 			return a;
 		}
+	//get: 목록의 특정위치에 저장된 항목을 꺼내준다.
+	//public E get(int index) {
+		
+	//}
 	
 	public void add(Object obj) {//add메서드를 호출해라
 		//Object 타입이므로 BoardList, LessonList, MemberList에 있는 add메서드를 호출한다.
@@ -42,4 +48,39 @@ public class ArrayList<E> {//ArrayList를 E 타입으로 다루겠다.
 	}
 	list[size++] = obj;//obj변수를  list배열의 요소 번호에 obj변수의 주소를 저장하고 배열요소의 값을 증가시킨다.
 	}
+
+	public int size() {
+		
+		return size;
+	}
+
+	public E get(int index) {
+		if (index < 0 || index >= size )//index가 무엇을가리키는 것인가? 입력된 lesson인스턴스의 주소값
+			return null;
+		return (E) list[index];
+		
+	}
+
+	public void set(int index, E obj) {
+		if (index < 0 || index >= size)
+		      return null;
+			
+		E old = (E)list[index];
+		list[index] = obj;
+		
+
+		
+	}
+
+	public void remove(int index) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void remove(int index) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
