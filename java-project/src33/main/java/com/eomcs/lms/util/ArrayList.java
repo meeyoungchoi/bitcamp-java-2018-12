@@ -29,7 +29,7 @@ public class ArrayList<E> {
 		}
 		System.arraycopy(list, 0, a, 0, size);//?
 		if (a.length > size)
-			a[size] = null;
+			a[size] = null;//?
 		return a;
 	}
 	
