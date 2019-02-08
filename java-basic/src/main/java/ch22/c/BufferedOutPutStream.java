@@ -3,6 +3,12 @@ package ch22.c;
 import java.io.IOException;
 import java.io.OutputStream;
 
+
+//기존의 출력 기능에 버퍼 기능을 덧붙이는 플러그인 역할을 한다.
+//=> 이런 역할을 하는 클래스를 "데코레이터(decorator)"라 부른다.
+// 데코레이터는 출력 클래스와 같은 조상이어야 한다.
+// 기능을 덧붙이는 것이기 때문에 원래의 출력 객체를 생성자에서 받아야 한다.
+//
 public class BufferedOutPutStream  extends OutputStream{
 	OutputStream out;
 	byte[] buf = new byte[1024];

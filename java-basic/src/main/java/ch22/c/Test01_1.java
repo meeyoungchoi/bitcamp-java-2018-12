@@ -5,7 +5,6 @@ package ch22.c;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-
 public class Test01_1 {
 	public static void main(String[] args) {
 		//System.out.println(0xff);
@@ -22,7 +21,8 @@ public class Test01_1 {
 			int b;
 			
 			while ((b = in.read()) != -1) {
-				//
+				//b를 더이상 읽어들일수 없다면?
+				//-1이 되면 더이상 읽어들일게 없으므로 while문을 끝낸다.
 			}
 			
 			long end = System.currentTimeMillis();
