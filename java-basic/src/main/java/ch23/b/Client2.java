@@ -10,7 +10,7 @@ public class Client2 {
 	public static void main(String[] args)  {
 		try (	Socket socket = new Socket("localhost", 8888);
 				//문자열ㅇ르 주고 받기 편하도록 오리지널 입출력 ㅅ트림 객체에 데코레이터를 부틴다.
-				PrintWriter out = new PrintWriter(socket.getOutputStream());
+				PrintWriter out = new PrintWriter(socket.getOutputStream());//?
 				Scanner in = new Scanner(socket.getInputStream())) {
 				
 			System.out.println("서버와 연결되었음!");
@@ -20,7 +20,7 @@ public class Client2 {
 			System.out.println("서버에 데이터를 보냈음!");
 			
 			
-			String response = in.nextLine();
+			String response = in.nextLine();//?
 			System.out.println(response);
 			
 		} catch (Exception e) {

@@ -6,7 +6,7 @@ import java.io.File;
 public class Test07 {
 	public static void main(String[] args) throws Exception {
 		//폴더와 파일을 한 번에 생성하는 방법
-		File file = new File("temp2/a/b/c/test.txt");
+		File file = new File("temp4/a/b/c/test.txt");
 		
 		//File dir = new File(file.getParent());//파일의 디렉토리 경로를 가지고 파일 객체 생성 
 		System.out.println(file.getParent());//파일의 디렉토리 정보를 출력 이거가지고 디렉토리 생성한후 그다믕에 파일을 생성하면된다.

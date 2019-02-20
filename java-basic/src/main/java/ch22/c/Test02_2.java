@@ -16,7 +16,7 @@ public class Test02_2 {
 			
 			long start = System.currentTimeMillis();
 			
-			byte[] buf = new byte[1024];
+			byte[] buf = new byte[1024];//?
 			int size = 0; //다시 버퍼를 쓸 수 있도록 size를 0으로 초기화 한다.
 			
 			for (int i = 0; i < 1000000; i++) {

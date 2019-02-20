@@ -12,7 +12,7 @@ public class Client1 {
 				OutputStream out = socket.getOutputStream();
 				//입력 스트림 객체를 준비하기
 				//InputStream in = ;
-				InputStream in = socket.getInputStream()) {
+				InputStream in = socket.getInputStream())/*?*/ {
 				
 			System.out.println("서버와 연결되었음!");
 			
@@ -22,13 +22,13 @@ public class Client1 {
 			//즉 blocking 모드로 작동한다.
 			//실제 write()는 소켓의 내부 버퍼로 출력한다.
 			//따라서 write()는 호출후 즉시 리턴된다.
-			out.write(100);
+			out.write(100);//?
 			System.out.println("서버에 데이터를 보냈음!");
 			
 			//서버의 응답을 받는다.
 			//서버가 응답을 할 때 까지 리턴하지 않는다.
 			//즉 blocking 모드로 작동한다.
-			int response = in.read();
+			int response = in.read();//?
 			System.out.println(response);
 			
 		} catch (Exception e) {

@@ -24,7 +24,7 @@ public class Test03_1 {
 //		new Score("유관순", 80, 80, 80)
 		//};
 		try (																//버퍼가 꽉차면 파일 아웃풋 스트림을 통해서 최종ㅈㄱ으로 출ㄹ겨한다.
-				DataOutputStream out = new DataOutputStream//decorator
+			/*?*/	DataOutputStream out = new DataOutputStream//decorator
 				(new BufferedOutputStream(//decorator
 				new FileOutputStream("score.data")))) {//원래 객체
 			

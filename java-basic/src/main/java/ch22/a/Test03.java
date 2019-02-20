@@ -29,7 +29,7 @@ public class Test03 {
 		
 		// 존재하지 않는 상위 폴더를 자동으로 생성하는 방법
 		//mkdirs()
-		dir = new File("temp2/ok");//그 경로에 디렉토리가 생성된다.
+		dir = new File("temp3/ok");//그 경로에 디렉토리가 생성된다.
 		if (dir.mkdirs()) {
 			System.out.println("디렉토리 생성됨");
 		} else {

@@ -15,7 +15,7 @@ public class Test02_1 {
 			//writ(byte[]) : 배열의 값 전체를 출력한다.
 			//write(byte[], 시작인텍스, 출력개수): 시작 위치부터 지정된 개수를 출력한다.
 			//
-			out.write(bytes);
+			out.write(bytes);//?
 			
 			out.close();
 		} catch (Exception e) {

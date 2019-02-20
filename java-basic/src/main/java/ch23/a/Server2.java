@@ -19,7 +19,7 @@ public class Server2 {
 		//예외를 던지고 연결 요청을 취소한다.
 		//클라이언트의 연결을 허락하는 최대 개수이다.
 		//new ServerSocket(포트번호, 대기열 크기)
-		ServerSocket serverSocket = new ServerSocket(8888, 3);
+		ServerSocket serverSocket = new ServerSocket(8888, 3);//?
 		System.out.println("서버 소켓 생성 완료!");
 		System.out.println("클라이언트의 연결을 기다림");
 		

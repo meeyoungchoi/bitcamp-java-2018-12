@@ -22,7 +22,7 @@ public class Test02_2 {
 				DataInputStream in = new DataInputStream(
 						new BufferedInputStream(
 						new FileInputStream("score.data")))) {
-			int len = in.readInt();
+			int len = in.readInt();//?
 			students = new Score[len];//배열을 딱 그 개수만큼 만들려구
 			
 			for (int i = 0; i < students.length; i++) {

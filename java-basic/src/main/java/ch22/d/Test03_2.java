@@ -9,7 +9,7 @@ import java.nio.CharBuffer;
 public class Test03_2 {
 	public static void main(String[] args) {
 		
-		//filewriter
+		//filereader
 		//문자 단위로 데이터를 읽는 일을 한다.
 		//
 		try (FileReader in = new FileReader("data.txt");
@@ -17,7 +17,7 @@ public class Test03_2 {
 				//버퍼 기능 + 한줄 읽기 기능
 				BufferedReader in2 = new BufferedReader(in)) {
 		
-			System.out.println(in2.readLine());
+			System.out.println(in2.readLine());//?
 			//CharBuffer cbuf = CharBuffer.allocate(1024);
 			//int len = in.read(cbuf);
 		

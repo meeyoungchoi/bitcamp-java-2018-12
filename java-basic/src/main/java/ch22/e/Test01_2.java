@@ -20,7 +20,7 @@ public class Test01_2 {
 			//	BufferedInputStream in1 = new BufferedInputStream(in);
 				DataInputStream in = new DataInputStream(
 						new BufferedInputStream(
-						new FileInputStream("score.data")))) {
+						new FileInputStream("score.data")))) /*?*/{
 			
 			s1 = new Score();
 			s1.setName(in.readUTF());

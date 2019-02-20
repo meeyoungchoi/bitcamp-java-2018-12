@@ -1,6 +1,7 @@
 package observer_before;
 
 public class Car {
+	
 	public void start() {
 		System.out.println("시동을 건다.");
 		
@@ -13,7 +14,7 @@ public class Car {
 		//3월 2일 - 자동차 시동을 걸때 브레이크오일 유무 검사
 		System.out.println("브레이크 오일 유무 검사");
 		
-		//4월 15일 - 
+	
 	}
 	
 	public void run() {

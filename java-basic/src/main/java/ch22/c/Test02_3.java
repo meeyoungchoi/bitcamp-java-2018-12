@@ -17,7 +17,7 @@ public class Test02_3 {
 			long start = System.currentTimeMillis();
 			
 			for (int i = 0; i < 1000000; i++) {
-				out2.write(0x55);
+				out2.write(0x55);//?
 			}
 			out2.flush(); //버퍼에 남아있는 것을 방출한다.
 		
