@@ -17,7 +17,7 @@ public class BoardDeleteApp {
 	public static void main(String[] args) {
 		try (Connection con = DriverManager.getConnection(
 				"jdbc:mariadb://localhost/bitcampdb?user=bitcamp&password=1111")){
-			System.out.println("dbms에 연결됨");
+	
 
 			//connection 객체를 통해 sql을 dbms에 전달할 때 사용할 도구를 얻는다.
 			//=>java.sql.statement 구현체

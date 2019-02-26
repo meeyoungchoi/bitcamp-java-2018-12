@@ -111,6 +111,7 @@ public class ServerApp {
 		}
 
 		//독립적으로 수행할 코드를 run()메서드에 작성한다.
+		@SuppressWarnings("static-access")
 		public void run() {//스레드풀에서 놀고있는 스레드가 호출한다.
 		try (Socket socket = this.socket;//close를 자동호출해달라
 		ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
@@ -135,7 +136,7 @@ public class ServerApp {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	try {Thread.currentThread().sleep(8000);;} catch(Exception e) {}
+		}	try {Thread.currentThread().sleep(8000);} catch(Exception e) {}
 		
 		System.out.printf("[%s : %s] 클라이언트와의 연결을 끊었음.\n", 
 				Thread.currentThread().getName(),
