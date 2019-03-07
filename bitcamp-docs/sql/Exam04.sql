@@ -63,7 +63,7 @@ delete from test1 where no=1;
 
 다른 테이블의 PK를 참조하는 컬럼으로 선언한다.
 ```
-alter table 테이블명
+alter table 테이블명                                                           --프라이머리키
     add constraint 제약조건이름 foreign key (컬럼명) references 테이블명(컬럼명);
 
 예)

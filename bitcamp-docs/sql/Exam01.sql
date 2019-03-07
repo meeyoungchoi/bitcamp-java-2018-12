@@ -208,7 +208,8 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 
 > create table test1(
   c1 char(1),
-  c2 int
+  c2 int,
+  c3 boolean
   );
 
 
@@ -220,6 +221,12 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 > insert into test1(c1) values('0'); /* false */
 > insert into test1(c2) values(1); /* true */
 > insert into test1(c2) values(0); /* false */
+ insert into test1(c3) values('Y'); /* yes */
+> insert into test1(c3) values('N'); /* no */
+> insert into test1(c3) values('T'); /* true */
+> insert into test1(c3) values('F'); /* false */
+> insert into test1(c3) values('1'); /* true */
+> insert into test1(c3) values('0'); /* false */
 
 
 ### 키 컬럼 지정 
@@ -264,7 +271,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
   kor int,
   eng int,
   math int
-  ); /* 실행 오류 */
+  ); /* 실행 오류 => Multiple primary key defined*/
 
 - 두 개 이상의 컬럼을 묶어서 PK로 선언하고 싶다면 
   각 컬럼에 대해서 개별적으로 PK를 지정해서는 안된다. 
@@ -284,7 +291,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 > insert into test1(name, age, kor, eng, math) values('aa', 11, 88, 88, 88);
 > insert into test1(name, age, kor, eng, math) values('ab', 10, 88, 88, 88);
 
-/* 이름과 나이가 같으면 중복되기 때문에 입력 거절이다. */
+/* 이름과 나이가 같으면 중복되기 때문에 입력 거절이다. =>Duplicate entry 'aa-10' for key 'PRIMARY' */
 > insert into test1(name, age, kor, eng, math) values('aa', 10, 88, 88, 88);
 
 - 여러 개의 컬럼을 묶어서 PK로 사용하면 데이터를 다루기가 불편하다.
@@ -304,7 +311,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 > insert into test1(no,name,age,kor,eng,math) values(3,'b',11,81,81,81);
 > insert into test1(no,name,age,kor,eng,math) values(4,'c',20,81,81,81);
 
-/* 번호가 중복되었기 때문에 입력 거절 */
+/* 번호가 중복되었기 때문에 입력 거절  Duplicate entry '4' for key 'PRIMARY' */
 > insert into test1(no,name,age,kor,eng,math) values(4,'d',21,81,81,81);
 
 /* 번호는 중복되지 않았지만, name과 age값이 중복되는 경우를 막을 수 없다*/
@@ -312,7 +319,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 
 - 위와 같은 경우를 대비해 준비된 문법이 unique이다.
 - PK는 아니지만 PK처럼 중복을 허락하지 않는 컬럼을 지정할 때 사용한다.
-- 그래서 PK를 대신해서 사용할 수 있는 key라고 해서 "대안키(alternate key)"라고 부른다.
+- 그래서 PK를 대신해서 사용할 수 있는 key라고 해서 "대안키(alternate key), 대체키"라고 부른다.
 
 #### unique = alternate key(대안키)
 > create table test1(
@@ -394,7 +401,12 @@ alter table test1
   add column no int;
 
 alter table test1
-  add column age int;  
+  add column age int; 
+  
+  alter table test1
+  add column no2 int,
+  add column age2 int;  
+  
 ```
 
 - PK 컬럼 지정, UNIQUE 컬럼 지정, INDEX 컬럼 지정
@@ -403,7 +415,7 @@ alter table test1
   add constraint test1_pk primary key (no),
   add constraint test1_uk unique (name, age),
   add fulltext index test1_name_idx (name);
-```
+```--이름하고 age를 같은 프라이머리 크기로 묶이게 된다.
 
 - 컬럼에 옵션 추가
 ```
@@ -424,6 +436,7 @@ insert into test1(no,name,age,kor,eng,math,sum,aver)
   
 insert into test1(no,name,age,kor,eng,math,sum,aver)
   values(2,'bbb',21,100,100,100,300,100);
+  --Duplicate entry '2' for key 'PRIMARY' 두번 넣은면 애러
 
 /* 다음은 name과 age의 값이 중복되기 때문에 입력 거절된다.*/  
 insert into test1(no,name,age,kor,eng,math,sum,aver)
@@ -448,10 +461,12 @@ create table test1(
 - 단 반드시 primary key여야 한다.
 ```
 alter table test1
-  modify column no int not null auto_increment; /* 아직 no가 pk가 아니기 때문에 오류*/
+  modify column no int not null auto_increment; /* 아직 no가 pk가 아니기 때문에 오류
+   Incorrect table definition; there can be only one auto column and it must be defined as a key
+*/
   
 alter table test1
-  add constraint primary key (no); /* 일단 no를 pk로 지정한다.*/
+  add constraint pk_test1 primary key (no); /* 일단 no를 pk로 지정한다.*/
 
 alter table test1
   modify column no int not null auto_increment; /* 그런 후 auto_increment를 지정한다.*/
@@ -468,6 +483,7 @@ insert into test1(name) values('eee');
 
 ## 뷰(view)
 - 조회 결과를 테이블처럼 사용하는 문법
+-select 문장이 복잡할 때 뷰로 정의해 놓고 사용하면 편리하다.
 
 ```
 create table test1 (
@@ -499,6 +515,8 @@ select no, name, class from test1 where working = 'Y';
 ```
 create view worker
   as select no, name, class from test1 where working = 'Y';
+  --select 문에 대해서 worker 라고 이름을 지정했다.
+  --seleect * from worker가 가능하다.
 ```
 
 - view가 참조하는 테이블에 데이터를 입력한 후 view를 조회하면?

@@ -1,3 +1,10 @@
+의사코드란
+sun = 0;
+
+반복 n = 1 ~ 1000;
+	만약 n이 3의 배수라면
+	sum += n; 이런식으로 작성하는 것이다.
+
 /* 조인
 => 서로 관련된 테이블의 데이터를 연결하여 추출하는 방법
 => 기법
@@ -9,11 +16,11 @@
 
 /* cross join : 두 테이블의 데이터를 1:1로 모두 연결한다.*/
 select mno, name from memb;
-select mno, work, bank from stnt;   
+select mno, work, bank from stnt s;   
 
 /* => mno가 어떤 테이블의 컬럼인지 지정하지 않으면 실행 오류!*/
-select mno, name, mno, work, bank
-from memb cross join stnt;
+select m.mno, name, s.mno, work, bank
+from memb m cross join stnt s;
 
 /* => select  컬럼이 두 테이블 모두 있을 경우,
          컬럼명 앞에 테이블명을 명시하여 구분하라!*/ 
@@ -22,6 +29,8 @@ from memb cross join stnt;
 /* 예전 문법 */
 select memb.mno, name, stnt.mno, work, bank
 from memb, stnt;
+
+
 
 
 /* => 컬럼명 앞에 테이블명을 붙이면 너무 길다.

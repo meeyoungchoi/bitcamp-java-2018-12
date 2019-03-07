@@ -35,14 +35,14 @@ insert into test1 values(null,'aaa','111','222','10101','seoul');
 
 /* 컬럼을 명시할 수 있다. 이때 값을 입력하는 컬럼의 순서를 바꿀 수 있다. */
 insert into 테이블명(컬럼,컬럼,...) values(값,값,...);
-insert into test1(name,fax,tel,no,pstno,addr) 
-    values('bbb','222','111',null,'10101','seoul');
+insert into test1(name,fax,tel,no,pstno,addr) values('bbb','222','111',null,'10101','seoul');
 ```
 
 - 값을 입력할 컬럼을 선택하기. 단 필수 입력 컬럼은 반드시 선택해야 한다.
 ```
 /* no 컬럼은 필수 입력 컬럼이지만, 
-  자동 증가 컬럼이기 때문에 값을 입력하지 않아도 된다.*/
+  자동 증가 컬럼이기 때문에 값을 입력하지 않아도 된다.
+  default 값이 없는 not null은 반드시 지정해야 한다.*/
 insert into test1(name,tel) values('ccc','333');
 ```
 

@@ -104,11 +104,14 @@ from lect_appl la
 /* 과장 또는 대리 매니저가 담당하고 있는 수강 신청만 추출하기 */
 select 
     la.lano, 
-    (select titl from lect where lno=la.lno) as lect_title, 
-    (select name from memb where mno=la.mno) as stud_name,
+   -- (select titl from lect where lno=la.lno) as lect_title, 
+    (select
+    	name 
+    from memb 
+    where mno=la.mno) as stud_name,
     lec.titl,
     lec.room_name,
-    lec.manager_no,
+    -- lec.manager_no,
     lec.manager_name,
     lec.manager_posi
 from lect_appl la 
@@ -121,6 +124,10 @@ where
                        where 
                            posi in ('과장', '대리'));
 
+-- select * from lect2 where manager_posi in ('과장', '주임');
+--  select * from lect2 where manager_posi in ('과장');
+-- select * from lect2 where manager_no in (select mno from mgr where posi in ('과장','주임'));
+-- select mno from mgr where posi in ('과장','주임');
 
 
 

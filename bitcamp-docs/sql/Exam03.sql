@@ -26,7 +26,8 @@ insert into test1(name,class,working) values('ooo','java101','N');
 ## select
 - 테이블의 데이터를 조회할 때 사용하는 명령이다.
 ```
-/* 모든 컬럼 값 조회하기. 컬럼 순서는 테이블을 생성할 때 선언한 순서이다.*/
+/* 모든 컬럼 값 조회하기. 컬럼 순서는 테이블을 생성할 때 선언한 순서이다.
+ * 특정 컬럼의 값만 조회할 때 => 프로젝션*/
 select * from 테이블;
 select * from test1;
 
@@ -60,13 +61,13 @@ from test1;
 
 ### 조회할 때 조건 지정하기
 - where 절과 연산자를 이용하여 조회 조건을 지정할 수 있다.
-
+- 이렇게 조건을 지정하여 결과를 선택하는 것을 "셀렉션(selection)" 이라 한다.
 ```
 select ... from ... where 조건...
 select * 
 from test1
 where no > 5;
-```
+```--where먼저 실행한후 from실행
 
 ## 연산자
 
@@ -78,25 +79,25 @@ where no > 5;
 select * from test1;
 
 /* 재직자 또는 java100기 학생만 조회하라!*/
-select no, name
+select no, name, class, working
 from test1
 where working='Y' or class='java100';
 
 /* java100기 학생 중에 재직자만 조회하라!*/
-select no, name
+select no, name, class, working
 from test1
 where working='Y' and class='java100';
 
 /* 재직자가 아닌 사람만 조회하라!*/
-select no, name
+select no, name, class, working
 from test1
 where not working = 'Y';
 
-select no, name
+select no, name, class, working
 from test1
 where working != 'Y';
 
-select no, name
+select no, name, class, working
 from test1
 where working <> 'Y';
 
@@ -123,7 +124,7 @@ where tel is not null;
 
 select *
 from test1
-where not (tel is null);
+where not tel is null;
 
 /* 전화 번호가 없는 학생만 조회하라!*/
 /* => null인지 여부를 가릴 때는 = 연산자가 아닌 is 연산자를 사용해야 한다.*/
@@ -172,7 +173,9 @@ insert into test1(name,class,working) values('s011', 'iotjava5', '1');
 insert into test1(name,class,working) values('s012', 'iotjava5', '1');
 insert into test1(name,class,working) values('s013', 'iotjava5', '1');
 
-/* class 이름이 java로 시작하는 모든 학생 조회하기 */
+/* class 이름이 java로 시작하는 모든 학생 조회하기 
+ * =>% : 0개 이상의 문자
+ * */
 select *
 from test1
 where class like 'java%';
@@ -266,8 +269,8 @@ select regdt, date(regdt), time(regdt) from test1;
 date_add(날짜데이터, interval 값 단위);
 date_sub(날짜데이터, interval 값 단위);
 
-select date_add(now(), interval 11 day);
-select date_sub(now(), interval 11 day);
+select date_add(now(), interval 11 day);--오늘 날짜에 11일 후의 날짜를 더해라
+select date_sub(now(), interval 11 day);--오늘 날짜에서 11일 전 날짜
 
 /* 두 날짜 사이의 간격을 알아내기 */
 datediff(날짜1, 날짜2);
@@ -298,6 +301,8 @@ insert into test1 (title, regdt)
   values('bbbb', str_to_date('11/22/2017', '%m/%d/%Y'));
 ```
 
+--날짜랑 시간도 같이 저장
+-- insert into test1(title,regdt) values('aaaa', '2017-11-22 15:54:04');
 
 
 
