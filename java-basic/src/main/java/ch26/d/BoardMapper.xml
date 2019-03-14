@@ -35,20 +35,20 @@ SQL 매퍼 파일에서는 그 별명을 사용할 수 있다.
 그러나 주로 소문자를 사용한다.
 -->
   <select id="select1" resultType="BOARD">
-    select * from x_board
+    select * from x_board<!-- 0개이상의 개시물이 리턴도리수 있다. 결과가 2개 3개 4개가 있을수 있으므로 sleectlist결과가 한개 나오나 0개 나오나 상관없다.-->
   </select>
   
   <select id="select2" resultType="board">
-    select * from x_board where board_id = 5
+    select * from x_board where board_id = 5<!-- 프라잉머리키가 5인거가 두개 존재할수 없다. 그러므로 slectone(0,1개)이다. -->
   </select>
   
-  <select id="select3" resultType="board2">
+  <select id="select3" resultType="board2"><!-- 보관되는 그릇이 다르다. -->
     select * from x_board where board_id = 5
   </select>
   
   <select id="select4" resultType="board2">
     select
-      board_id as no, /* 컬럼명이 프로퍼티명과 다르면 별명으로 프로퍼티명을 지정한다.*/ 
+      board_id as no, /* 컬럼명이 프로퍼티명과 다르면 별명으로 프로퍼티명을 지정한다. as ~ 로 별명을 부여한다. setViewCount()호출*/ 
       title,
       contents,
       created_date as createdDate, /* 컬럼명이 프로퍼티명과 다르면 별명으로 프로퍼티명을 지정한다.*/

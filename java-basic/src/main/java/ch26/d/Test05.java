@@ -28,7 +28,7 @@ public class Test05 {
 		//이를 해결하기 위해 mybatis는 컬럼의 이름과 프로퍼티 이름을 미리 설정해두는 문법을 제공한다.
 		//<resultMap></reslutMap>
 		//select결과를 뱁
-		Map<Object,Object> map = sqlSession.selectOne("board.select6");
+		Map<Object,Object> map = sqlSession.selectOne("board.select6"); //selectone은 결과가 없거나 한개 만들어 줄때 사용하낟.
 		System.out.println(map);
 		System.out.println(map.get("board_id"));
 		System.out.println(map.get("title"));
@@ -40,6 +40,13 @@ public class Test05 {
 		List<Map<?,?>> list = sqlSession.selectList("board.select7");
 		for (Map<?,?> m: list) {
 			System.out.println(m);
+			System.out.printf("%d, %s, %s, %s, %d\n",
+					m.get("board_id"),
+			m.get("title"),
+			m.get("contents"),
+			m.get("created"),
+			m.get("board_id"));
+	
 		}
 
 

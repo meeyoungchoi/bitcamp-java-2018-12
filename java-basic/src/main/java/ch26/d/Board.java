@@ -2,7 +2,7 @@ package ch26.d;
 
 import java.sql.Date;
 
-public class Board {
+public class Board {//프로퍼티 이름이 컬럼이름과 같다.
 	private int board_id;
 	private String title;
 	private String contents;

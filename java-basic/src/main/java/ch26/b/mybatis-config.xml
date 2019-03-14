@@ -27,7 +27,7 @@ property의 조상은 <dataSource,<environment,  <environments,<configuration> �
     <!-- 트랜잭션 관리 방법 -->
       <transactionManager type="JDBC"/>
       
-      <!-- 커넥션풀 설정 -->
+      <!-- 커넥션풀 설정 properties에서 읽어들인 정보를 사용할때 -->
       <dataSource type="POOLED">
        <property name="driver" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>

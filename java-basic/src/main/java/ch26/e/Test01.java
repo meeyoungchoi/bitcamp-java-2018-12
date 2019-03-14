@@ -22,7 +22,7 @@ public class Test01 {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
 		//in-parameter 값을 넘기지 않고 sql 실행하기
-		List<Board> boards = sqlSession.selectList("board.select1");
+		List<Board> boards = sqlSession.selectList("board.select1");//sql아이디
 		for (Board b : boards) {
 			System.out.println(b);
 		}
@@ -33,9 +33,9 @@ public class Test01 {
 		//
 		Board board = sqlSession.selectOne("board.select2",5);
 		System.out.println(board);
-
+System.out.println("=============================================================================================");
 		//in-parameter String 값 넘기기
-				List<Board> boards2 = sqlSession.selectList("board.select3","내용");
+				List<Board> boards2 = sqlSession.selectList("board.select2",5);//sql아이디 다음에 값을 주면된다.
 				for (Board b : boards2) {
 					System.out.println(b);
 				}

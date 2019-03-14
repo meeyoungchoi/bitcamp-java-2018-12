@@ -14,7 +14,7 @@ sql 매퍼 파일에서는 그별명을 사용할 수 있다.
 별명은 대소문자를 구분하지 않는다.
 그러나 주로 소문자를 사용한다.
 -->
-  <select id="select1" resultType="board">
+  <select id="select1" resultType="board"><!-- 전체 이름을 적는대신 별명을 적으면 편하다. -->
     select * from x_board
   </select>
 </mapper>

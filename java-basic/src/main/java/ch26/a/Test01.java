@@ -75,9 +75,9 @@ public class Test01 {
 		//파라미터 값은 sql 문의 id이다.
 		//sql 매퍼 파일의 namespace 값과 sql id 값을 결합해서 지정한다.
 		//selectList()의 리턴 값은 sql 매퍼 파일의 resultTypte에 지정된 객체를 담고 있는 list객체이다.
-		List<Board> list = sqlSession.selectList("board.select1");
+		List<Board> list = sqlSession.selectList("board.select1");//sql아이디 지어 namesapce.sql아이디.
 		
-		//5.출력
+		//5.출력(그인스턴스를 리턴받는다.)
 		for (Board b : list) {
 			System.out.printf("%d, %s, %s, %s, %d\n",
 					b.getBoard_id(),

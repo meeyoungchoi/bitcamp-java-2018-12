@@ -2,7 +2,7 @@ package ch26.d;
 
 import java.sql.Date;
 
-public class Board2 {
+public class Board2 {//일부는 컬럼과 프로퍼티가 같지만 일부는 다르다. 다른 부분애는 값이 재대로 들어오지 않는다.
 	private int no;
 	private String title;
 	private String contents;

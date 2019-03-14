@@ -45,6 +45,6 @@ property의 조상은 <dataSource,<environment,  <environments,<configuration> �
   <mappers>
   
   <!-- sql이 보관된 파일의 경로 -->
-    <mapper resource="ch26/a/BoardMapper.xml"/>
+    <mapper resource="ch26/a/BoardMapper.xml"/><!-- sql매퍼파일:sql이 들어있는 팡리 -->
   </mappers>
 </configuration>

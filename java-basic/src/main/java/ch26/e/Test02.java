@@ -26,7 +26,7 @@ public class Test02 {
 		//그러나 update delete 메서드를 호출해도 된다.
 		//왜? insert, update, delete 모두 jdbc에서 executeUpdate()를 호출하기 때문이다.
 		//
-		Board board = new Board();
+		Board board = new Board();//값을 여러개 넘기고 싶으면 객체에 담아서 념겨자
 		board.setTitle("오호라..제목이오!");
 		board.setContents("내용이라네요......");
 		
@@ -41,7 +41,7 @@ public class Test02 {
 		count = sqlSession.insert("board.insert2", board2);
 		System.out.println(count);
 		
-		
+		sqlSession.commit();
 		
 		//in-parameter 값을 넘기지 않고 sql 실행하기
 		List<Board> boards = sqlSession.selectList("board.select1");
