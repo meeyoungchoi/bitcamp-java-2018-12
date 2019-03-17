@@ -18,7 +18,7 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() {
     try (Connection con = ConnectionFactory.create();
     		PreparedStatement stmt = con.prepareStatement(
-        "select board_id, conts, cdt, vw_cnt from lms_board"
+        "select board_id, c레드 로컬(thread local) 변수 를 이요하여 onts, cdt, vw_cnt from lms_board"
             + " order by board_id desc")) {
 
       try (ResultSet rs = stmt.executeQuery()) {

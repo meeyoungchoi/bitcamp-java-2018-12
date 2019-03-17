@@ -8,8 +8,24 @@
 //src/main/resources/com/eomcs.
 //2.LessonDao에 mybatis 적용
 //src/main/resources/com/eomcs/lms/mapper/lesson.mapper.xml 생성
-//lessonDaoImpl생성
-//
+//    - LessonDaoImpl 클래스 변경
+//    - ApplicationInitializer 클래스 변경
+// 3) MemberDao에 Mybatis 적용
+//    - src/main/resources/com/eomcs/lms/mapper/MemberMapper.xml 생성
+//    - MemberDaoImpl 클래스 변경
+//    - ApplicationInitializer 클래스 변경
+// 4) BoardDao에 Mybatis 적용
+//    - src/main/resources/com/eomcs/lms/mapper/BoardMapper.xml 생성
+//    - BoardDaoImpl 클래스 변경
+//    - ApplicationInitializer 클래스 변경 
+// 5) PhotoBoardDao에 Mybatis 적용
+//    - src/main/resources/com/eomcs/lms/mapper/PhotoBoardMapper.xml 생성
+//    - PhotoBoardDaoImpl 클래스 변경
+//    - ApplicationInitializer 클래스 변경
+// 6) PhotoFileDao에 Mybatis 적용
+//    - src/main/resources/com/eomcs/lms/mapper/PhotoFileMapper.xml 생성
+//    - PhotoFileDaoImpl 클래스 변경
+//    - ApplicationInitializer 클래스 변경
 
 package com.eomcs.lms;
 import java.io.BufferedReader;

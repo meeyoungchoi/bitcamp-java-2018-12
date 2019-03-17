@@ -3,39 +3,41 @@ package com.eomcs.lms.handler;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
-
-import com.eomcs.lms.context.Component;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import com.eomcs.lms.context.RequestMapping;
 import com.eomcs.lms.dao.LessonDao;
 import com.eomcs.lms.dao.PhotoBoardDao;
 import com.eomcs.lms.dao.PhotoFileDao;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.domain.PhotoBoard;
-import com.eomcs.mybatis.TransactionManager;
 
 @Component
-public class LessonCommand  {
+public class LessonCommand {
   
   LessonDao lessonDao;
   PhotoBoardDao photoBoardDao;
   PhotoFileDao photoFileDao;
-  TransactionManager txManager;
+  PlatformTransactionManager txManager;
   
-  public LessonCommand(LessonDao lessonDao, 
-		  PhotoBoardDao photoBoardDao,
-	      PhotoFileDao photoFileDao,
-	      TransactionManager txManager) {
+  public LessonCommand(
+      LessonDao lessonDao,
+      PhotoBoardDao photoBoardDao,
+      PhotoFileDao photoFileDao,
+      PlatformTransactionManager txManager) {
     this.lessonDao = lessonDao;
     this.photoBoardDao = photoBoardDao;
     this.photoFileDao = photoFileDao;
     this.txManager = txManager;
-   
   }
   
   
   @RequestMapping("/lesson/list")
   public void list(Response response) throws Exception {
-    List<Lesson> lessons = lessonDao.findAll();//LESSONMAPPER.XML의 FINDALL호출
+    List<Lesson> lessons = lessonDao.findAll();
     for (Lesson lesson : lessons) {
       response.println(String.format("%3d, %-15s, %10s ~ %10s, %4d", 
           lesson.getNo(), lesson.getTitle(), 
@@ -55,34 +57,6 @@ public class LessonCommand  {
     
     lessonDao.insert(lesson);
     response.println("저장하였습니다.");
-  }
-  
-  @RequestMapping("/lesson/delete")
-  public void delete(Response response) throws Exception {
-    txManager.beginTransaction();
-    try {
-      int no = response.requestInt("번호?");
-      
-      HashMap<String,Object> params = new HashMap<>();
-      params.put("lessonNo", no);
-      
-      List<PhotoBoard> boards = photoBoardDao.findAll(params);
-      for (PhotoBoard board : boards) {
-        photoFileDao.deleteByPhotoBoardNo(board.getNo());
-        photoBoardDao.delete(board.getNo());
-      }
-      
-      if (lessonDao.delete(no) == 0) {
-        response.println("해당 번호의 수업이 없습니다.");
-        return;
-      }
-      response.println("삭제했습니다.");
-      txManager.commit();
-      
-    } catch (Exception e) {
-      txManager.rollback();
-      response.println("삭제 중 오류 발생.");
-    }
   }
   
   @RequestMapping("/lesson/detail")
@@ -159,6 +133,42 @@ public class LessonCommand  {
       
     } else {
       response.println("변경 취소했습니다.");
+    }
+  }
+  
+  @RequestMapping("/lesson/delete")
+  public void delete(Response response) throws Exception {
+    
+    // 트랜잭션 동작 방식을 설정한다.
+    DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+    def.setName("tx1");
+    def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+    
+    // 트랜잭션을 준비한다.
+    TransactionStatus status = txManager.getTransaction(def);
+    
+    try {
+      int no = response.requestInt("번호?");
+      
+      HashMap<String,Object> params = new HashMap<>();
+      params.put("lessonNo", no);
+      
+      List<PhotoBoard> boards = photoBoardDao.findAll(params);
+      for (PhotoBoard board : boards) {
+        photoFileDao.deleteByPhotoBoardNo(board.getNo());
+        photoBoardDao.delete(board.getNo());
+      }
+      
+      if (lessonDao.delete(no) == 0) {
+        response.println("해당 번호의 수업이 없습니다.");
+        return;
+      }
+      response.println("삭제했습니다.");
+      txManager.commit(status);
+      
+    } catch (Exception e) {
+      txManager.rollback(status);
+      response.println("삭제 중 오류 발생.");
     }
   }
 }

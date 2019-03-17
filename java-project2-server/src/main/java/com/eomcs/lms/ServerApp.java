@@ -1,27 +1,25 @@
-// 20단계: Command 인터페이스 대신 애노테이션을 이용하여 명령어를 처리할 메서드를 식별하기 
-//=>기존에는 클라이언트로부터 명령을 받았을 때 Command 규칙에 따라 메서드를 호출하였다.
-//=>이번 단계에서는 Command 인터페이스의 구현 여부와 상관없이
-//@RequestMapping이 붙은 메서드를 찾아 호출하자
-//=>이렇게 하면 특정 인터페이스의 제약에서 벗어날 수 있다.
-//좀더 유연하게 커맨드를 처리하는 코드를 작성할 수 있다.
-//
-//작업
-//1) RequestMapping 애노테이션 정의
-//=>value 프로퍼티는 명령을 저장한다.
-//2)RequestHandlerMappingHandler 리케스트 연결 요청에 대한 연결 정보를 다루는 
-//RequestHandler: 명령어 / Handler: 명령어를 처리하는 클래스
-//=>RequestMappingHandlerMapping정의
-//RequestMappingHandler 정의
-//=>ResultMapping 애노테이션이 
-//=>클라이언트가 보낸 명령을 처리할 메서드에 대한 정보를 관리한다.
-//4)command 변경
-//=>crud 관련 커맨드를 한 클래스로 합쳐서 XxxxCommand로 만든다.
-//예) BoardAddCommand, BOardlistcommand ,,......=;>boardcommand
-//5)ApplicationContext를 변경한다.
-//=>인스턴스를 모두 생성한 후 RequestMappingHandler를 찾아
-//RequestMappingHandlerMapping에 보관한다.
-//6)ServerApp 변경
-//=>클라이언트 요청이 들어왔을 떄 
+// 23단계: Spring IoC 컨테이너와 Mybatis 연동하기
+// => Mybatis 관련 객체를 Spring IoC 컨테이너가 자동으로 관리하도록 연동한다.
+// 
+// 작업
+// 1) Spring IoC 컨테이너와 연동할 때 사용할 Mybatis 라이브러리 가져오기
+//    => mvnrepository.com 에서 mybatis spring 으로 검색한다.
+//    => 프로젝트의 build.gradle 파일에 spring 의존 라이브러리 정보를 추가한다.
+//    => '$ gradle eclipse'를 실행하여 의존 라이브러리를 다운로드 받고 
+//       이클립스 설정 파일을 갱신한다.
+//    => 이클립스 IDE에서 프로젝트를 refresh 한다.
+// 2) 의존 라이브러리 준비
+//    => DataSource 구현체인 apache의 commons-dbcp2 라이브러리 추가
+//    => Spring의 jdbc 관련 spring-jdbc 라이브러리 추가.
+//       트랜잭션 관련 라이브러리도 자동으로 추가된다.
+// 3) AppConfig 변경
+//    => mybatis-config.xml 삭제한다.
+//    => SqlSessionFactoryProxy, SqlSessionProxy, TransactionManager 삭제한다.
+//    => DaoFactory 삭제한다.
+//    => mybatis 관련 객체를 생성한다.
+// 4) LessonCommand, PhotoBoardCommand 변경
+//    => Spring 프레임워크에서 제공해주는 트랜잭션 관리자로 교체한다.
+// 
 package com.eomcs.lms;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -30,8 +28,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import com.eomcs.lms.context.ApplicationContext;
+import org.springframework.context.ApplicationContext;
 import com.eomcs.lms.context.ApplicationContextListener;
 import com.eomcs.lms.context.RequestMappingHandlerMapping;
 import com.eomcs.lms.context.RequestMappingHandlerMapping.RequestMappingHandler;
@@ -42,15 +39,15 @@ public class ServerApp {
   // ApplicationContextListener(옵저버) 목록을 보관할 객체
   ArrayList<ApplicationContextListener> listeners = new ArrayList<>();
 
-  // 공용 객체를 보관하는 저장소 
+  // 공용 객체를 보관하는 저장소
   HashMap<String,Object> context = new HashMap<>();
-  
-  //Command 객체와 그와 관련된 객체를 보관하고 있는 빈  컨테이너
-  ApplicationContext beanContainer;
-  
-  //클라이언트 요청을 처리할 메서드 정보가 들어있는 객체
-  RequestMappingHandlerMapping handlerMapping;
 
+  // Command 객체와 그와 관련된 객체를 보관하고 있는 빈 컨테이너
+  ApplicationContext iocContainer;
+  
+  // 클라이언트 요청을 처리할 메서드 정보가 들어 있는 객체
+  RequestMappingHandlerMapping handlerMapping;
+  
   public void addApplicationContextListener(ApplicationContextListener listener) {
     listeners.add(listener);
   }
@@ -64,14 +61,15 @@ public class ServerApp {
       for (ApplicationContextListener listener : listeners) {
         listener.contextInitialized(context);
       }
+
+      // ApplicationInitializer가 준비한 ApplicationContext를 꺼낸다.
+      iocContainer = (ApplicationContext) context.get("applicationContext");
       
-      //ApplicationInitializer가 준비한 ApplicationContext를 꺼낸다.
-      beanContainer = (ApplicationContext) context.get("applicationContext");
-      
-      //빈 컨테이너에서 RequestMappingHandlerMapping객체를 꺼낸다.
-      //이 객체에 클라이언트 요청을 
-      handlerMapping =
-    		  (RequestMappingHandlerMapping) beanContainer.getBean("handlerMapping");
+      // ApplicationInitializer 옵저버(관찰자, 보고 받는자)에서 준비한
+      // RequestMappingHandlerMapping 객체를 꺼낸다.
+      // 이 객체에 클라이언트 요청을 처리할 메서드 정보가 들어 있다.
+      handlerMapping = 
+          (RequestMappingHandlerMapping) context.get("handlerMapping");
       
       System.out.println("서버 실행 중...");
       
@@ -127,8 +125,7 @@ public class ServerApp {
         String request = in.readLine();
         
         // 클라이언트에게 응답하기
-        //=>클라이언트 요청을 처리할 객체는 빈 컨테이너에서 꺼낸다.(보드디에오임플을 빈컨테이너에서 꺼낸다.)
-        //리케스트를 가져와서 
+        // => 클라이언트 요청을 처리할 메서드를 꺼낸다.
         RequestMappingHandler requestHandler = handlerMapping.get(request);
         
         if (requestHandler == null) {
@@ -139,10 +136,11 @@ public class ServerApp {
         }
         
         try {
-        	//클라이언트 요청을 처리할 메서드를 찾았다면 호출한다.
-        	requestHandler.method.invoke(
-        			requestHandler.bean, //메서드를 호출할 때 사용할 인스턴스
-        			new Response(in, out));//메서드 파라미터 값
+          // 클라이언트 요청을 처리할 메서드를 찾았다면 호출한다.
+          requestHandler.method.invoke(
+              requestHandler.bean, // 메서드를 호출할 때 사용할 인스턴스 
+              new Response(in, out)); // 메서드 파라미터 값
+          
         } catch (Exception e) {
           out.printf("실행 오류! : %s\n", e.getMessage());
           e.printStackTrace();

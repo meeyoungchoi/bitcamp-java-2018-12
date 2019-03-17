@@ -2,29 +2,31 @@ package com.eomcs.lms.handler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import com.eomcs.lms.context.Component;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import com.eomcs.lms.context.RequestMapping;
 import com.eomcs.lms.dao.PhotoBoardDao;
 import com.eomcs.lms.dao.PhotoFileDao;
 import com.eomcs.lms.domain.PhotoBoard;
 import com.eomcs.lms.domain.PhotoFile;
-import com.eomcs.mybatis.TransactionManager;
 
 @Component
-public class PhotoBoardCommand  {
+public class PhotoBoardCommand {
 
-	 TransactionManager txManager;
-  PhotoBoardDao photoBoardDao;
+  PlatformTransactionManager txManager;
+  PhotoBoardDao photoBoardDao; 
   PhotoFileDao photoFileDao;
   
-  public PhotoBoardCommand(PhotoBoardDao photoBoardDao,
-		  PhotoFileDao photoFileDao,
-	      TransactionManager txManager) {
+  public PhotoBoardCommand(
+      PhotoBoardDao photoBoardDao,
+      PhotoFileDao photoFileDao,
+      PlatformTransactionManager txManager) {
     this.photoBoardDao = photoBoardDao;
     this.photoFileDao = photoFileDao;
     this.txManager = txManager;
-   
   }
 
   @RequestMapping("/photoboard/list")
@@ -44,7 +46,14 @@ public class PhotoBoardCommand  {
   
   @RequestMapping("/photoboard/add")
   public void add(Response response) throws Exception {
-    txManager.beginTransaction();
+    
+    // 트랜잭션 동작 방식을 설정한다.
+    DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+    def.setName("tx1");
+    def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+    
+    // 트랜잭션을 준비한다.
+    TransactionStatus status = txManager.getTransaction(def);
     
     try {
       PhotoBoard board = new PhotoBoard();
@@ -75,37 +84,14 @@ public class PhotoBoardCommand  {
       
       photoFileDao.insert(files);
       
-      txManager.commit();
       response.println("저장하였습니다.");
- 
+      txManager.commit(status);
       
     } catch (Exception e) {
       e.printStackTrace();
       response.println("저장 중 오류가 발생.");
-      txManager.rollback();
+      txManager.rollback(status);
       
-    }
-  }
-  
-  @RequestMapping("/photoboard/delete")
-  public void delete(Response response) throws Exception {
-    txManager.beginTransaction();
-    try {
-      int no = response.requestInt("번호?");
-  
-      // 데이터를 지울 때는 자식 테이블의 데이터부터 지워야 한다.
-      photoFileDao.deleteByPhotoBoardNo(no);
-  
-      if (photoBoardDao.delete(no) == 0) {
-        response.println("해당 번호의 사진이 없습니다.");
-        return;
-      }
-      response.println("삭제했습니다.");
-      txManager.commit();
-      
-    } catch (Exception e) {
-      txManager.rollback();
-      response.println("삭제 중 오류 발생.");
     }
   }
   
@@ -140,44 +126,18 @@ public class PhotoBoardCommand  {
     }
     
   }
-
-  @RequestMapping("/photoboard/search")
-  public void search(Response response) {
-    HashMap<String,Object> params = new HashMap<>();
-    try {
-      int lessonNo = response.requestInt("사진 파일 번호?");
-      params.put("lessonNo", lessonNo);
-    } catch (Exception e) {
-    }
-    
-    try {
-      String keyword = response.requestString("검색어?");
-      if (keyword.length() > 0)
-        //SQL에서 검색할 때 사용할 문자열 패턴을 다음과 같이 자바에서 만들어 전달할 수 있다. 
-        //params.put("keyword", "%" + keyword + "%");
-        
-        // 또는 다음과 같이 키워드를 전달한 후 mybatis 쪽에서 패턴을 정의할 수 있다.
-        params.put("keyword", keyword);
-    } catch (Exception e) {
-    }
-    
-    List<PhotoBoard> boards = photoBoardDao.findAll(params);
-    
-    response.println("[검색 결과]");
-    for (PhotoBoard board : boards) {
-      response.println(
-          String.format("%3d, %-20s, %s, %d, %d", 
-            board.getNo(), 
-            board.getTitle(), 
-            board.getCreatedDate(), 
-            board.getViewCount(),
-            board.getLessonNo()));
-    }
-  }
   
   @RequestMapping("/photoboard/update")
   public void update(Response response) throws Exception {
-    txManager.beginTransaction();
+    
+    // 트랜잭션 동작 방식을 설정한다.
+    DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+    def.setName("tx1");
+    def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+    
+    // 트랜잭션을 준비한다.
+    TransactionStatus status = txManager.getTransaction(def);
+    
     try {
       PhotoBoard board = new PhotoBoard();
       board.setNo(response.requestInt("번호?"));
@@ -238,11 +198,75 @@ public class PhotoBoardCommand  {
       }
       
       response.println("변경했습니다.");
-      txManager.commit();
+      txManager.commit(status);
       
     } catch (Exception e) {
-      txManager.rollback();
+      txManager.rollback(status);
       response.println("변경 중 오류 발생.");
+    }
+  }
+
+  @RequestMapping("/photoboard/delete")
+  public void delete(Response response) throws Exception {
+    
+    // 트랜잭션 동작 방식을 설정한다.
+    DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+    def.setName("tx1");
+    def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+    
+    // 트랜잭션을 준비한다.
+    TransactionStatus status = txManager.getTransaction(def);
+    
+    try {
+      int no = response.requestInt("번호?");
+  
+      // 데이터를 지울 때는 자식 테이블의 데이터부터 지워야 한다.
+      photoFileDao.deleteByPhotoBoardNo(no);
+  
+      if (photoBoardDao.delete(no) == 0) {
+        response.println("해당 번호의 사진이 없습니다.");
+        return;
+      }
+      response.println("삭제했습니다.");
+      txManager.commit(status);
+      
+    } catch (Exception e) {
+      txManager.rollback(status);
+      response.println("삭제 중 오류 발생.");
+    }
+  }
+  
+  @RequestMapping("/photoboard/search")
+  public void search(Response response) {
+    HashMap<String,Object> params = new HashMap<>();
+    try {
+      int lessonNo = response.requestInt("수업 번호?");
+      params.put("lessonNo", lessonNo);
+    } catch (Exception e) {
+    }
+    
+    try {
+      String keyword = response.requestString("검색어?");
+      if (keyword.length() > 0)
+        //SQL에서 검색할 때 사용할 문자열 패턴을 다음과 같이 자바에서 만들어 전달할 수 있다. 
+        //params.put("keyword", "%" + keyword + "%");
+        
+        // 또는 다음과 같이 키워드를 전달한 후 mybatis 쪽에서 패턴을 정의할 수 있다.
+        params.put("keyword", keyword);
+    } catch (Exception e) {
+    }
+    
+    List<PhotoBoard> boards = photoBoardDao.findAll(params);
+    
+    response.println("[검색 결과]");
+    for (PhotoBoard board : boards) {
+      response.println(
+          String.format("%3d, %-20s, %s, %d, %d", 
+            board.getNo(), 
+            board.getTitle(), 
+            board.getCreatedDate(), 
+            board.getViewCount(),
+            board.getLessonNo()));
     }
   }
 }

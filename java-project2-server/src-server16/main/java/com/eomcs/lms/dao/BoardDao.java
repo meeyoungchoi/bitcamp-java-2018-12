@@ -4,7 +4,7 @@ import java.util.List;
 import com.eomcs.lms.domain.Board;
 
 public interface BoardDao {
-  void insert(Board board);
+  int insert(Board board);
   List<Board> findAll();
   Board findByNo(int no);
   void increaseCount(int no);

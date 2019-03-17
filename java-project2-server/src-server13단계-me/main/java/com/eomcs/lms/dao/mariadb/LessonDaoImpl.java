@@ -15,7 +15,7 @@ public class LessonDaoImpl implements LessonDao {
 	// DAO가 사용하는 커넥션 객체를 외부에서 주입 받는다.
 	DataSource dataSource;
 
-	//
+	//mybatis 의존 객체 선언
 	SqlSessionFactory sqlSessionFactory;
 
 	public LessonDaoImpl(SqlSessionFactory sqlSessionFactory) {
