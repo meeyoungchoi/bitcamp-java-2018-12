@@ -25,6 +25,6 @@ int a;
 		*/
 int b;	
 
-//@MyAnnotation5("okok")//value 프로퍼티 값만 설정할 경우에 이름을 생략할 수 있다. value=이 
+//@MyAnnotation5("okok")// value 프로퍼티 값만 설정할 경우에 이름을 생략할 수 있다.
 int c;
 }

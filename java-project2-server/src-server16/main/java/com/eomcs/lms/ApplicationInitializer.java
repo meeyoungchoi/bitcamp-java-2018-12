@@ -59,7 +59,7 @@ public class ApplicationInitializer implements ApplicationContextListener {
       TransactionManager txManager = new TransactionManager(sqlSessionFactoryProxy);
       
       //dao 인터페이스의 구현체를 자동으로 생성하기
-     /* LessonDao obj = (LessonDao)Proxy.newProxyInstance(
+    /* LessonDao obj = (LessonDao)Proxy.newProxyInstance(
     		  LessonDao.class.getClassLoader(), 
     		  new Class[] {LessonDao.class}, 
     		  new DaoInvocationHandler(sqlSessionFactoryProxy));

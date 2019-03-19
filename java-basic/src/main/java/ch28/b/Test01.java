@@ -22,10 +22,10 @@ import java.lang.annotation.Annotation;
 @MyAnnotation3// .class 파일에서 확인할 수 있다.
 public class Test01 {
 	public static void main(String[] args) {
-		//
-		
-		//
-		//
+		 // Test01.class 파일을 편집기로 열어서 확인해보라!
+	    
+	    // 실행할 때 추출 여부 확인하기
+	    // => 애노테이션 추출하기
 		Class<?> clazz = Test01.class;
 		Annotation[] annotations = clazz.getAnnotations();
 		

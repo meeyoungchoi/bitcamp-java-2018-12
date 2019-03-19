@@ -44,9 +44,9 @@ public class ApplicationContext {
 		// 3) Command 인터페이스를 구현한 클래스만 찾아서 인스턴스를 생성한다.
 		prepareCommand();
 
-		//
+	    // 4) 저장소에 보관된 객체의 이름과 클래스명을 출력한다.
 		System.out.println("=========================================================================");
-		Set<String> names = beanContainer.keySet();//빈컨테이너에 들어있는 이름
+		Set<String> names = beanContainer.keySet();//빈컨테이너에 들어있는 이름 즉 hashMap의 key를 가져온다.
 		for (String name : names) {
 			System.out.printf("%s : %s\n", name,
 					beanContainer.getClass().getSimpleName());
@@ -157,7 +157,7 @@ public class ApplicationContext {
 			//그냥 무시하고 다른 생성자를 찾아 인스턴스를 생성한다.
 		}
 
-		//기본
+		// => 기본 생성자가 없다면, 다른 생성자 목록을 얻는다.
 		Constructor<?>[] constructors = clazz.getConstructors();
 		for (Constructor<?> c : constructors) {
 			//생성자를 호출하려면 먼저 어떤 타입의 파라미터가 필요한지 알아야 한다.
@@ -196,7 +196,7 @@ public class ApplicationContext {
 	}
 
 	private Object findBean(Class<?> type) {
-		//빈 컨테이너에서 특정 타입의 인스턴스를 차직
+		// 빈 컨테이너에서 특정 타입의 인스턴스를 찾기
 		//=>먼저 빈 컨테이너에서 인스턴스 목록을 꺼낸다.
 		Collection<Object> beans = beanContainer.values();
 		for (Object bean : beans) {

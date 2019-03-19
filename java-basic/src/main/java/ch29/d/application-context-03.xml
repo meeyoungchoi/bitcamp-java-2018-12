@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--프로퍼티를 설정할 때 의존 객체 생성하여 주입하기-->
+	<bean id="bb1" class="ch29.d.BlackBox" >
+		<property name="maker" value="비트오토"/>
+		<property name="model" value="비트박스ok"/>
+			<bean id="c1" class="ch29.d.Car"/>
+		<property name="maker" value="비트자동차"/>
+		<property name="model1" value="비트박스OK"/>
+
+	</bean>
+
+
+	
+	<bean id="c2" class="ch29.d.Car">
+		<property name="maker" value="비트자동차"/>
+		<property name="model1" ref="bb1"/>
+
+	</bean>
+	
+	
+	<!-- p 네임스페이스로 의존 객체를 주입할 때  
+	
+	
+	대소문자 주의
+	-->
+	
+	<bean id="c3" class="ch29.d.Car"
+		p:maker="비트자동차" p:model="모델4" p:blackBox-ref="bb1"/>
+	
+</beans>
