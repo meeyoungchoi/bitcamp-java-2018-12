@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- 의존 객체 주입하기
+  -->
+  
+  <!-- 프로퍼티 값을 설정하다가 주입하려면 의존 객체가 없으면,
+       의존 객체를 먼저 생성한다. 
+       따라서 의존 객체를 먼저 생성하기 위해 고민할 필요가 없다.
+       스프링 IoC 컨테이너가 자동으로 처리한다. -->
+  <bean id="c1" class="ch29.d.Car">
+    <property name="maker" value="비트자동차"/>
+    <property name="model" value="모델1"/>
+    <property name="blackBox"><ref bean="bb1"/></property>
+  </bean>
 
-	<!--프로퍼티 값을 설정하다가 주입하려는 의존 객체가 없으면 먼저 의존 객체를 생성한다. 
-	따라서 의존객체를 먼저 생성하기 위해 고민할 필요가 없다.
-	스프링 ioc 컨테이너가 자동으로 처리한다.
-	injection: 주입
-	<>안에 주석을 넣을수 없다.
-	scope="prototype" -->
-	<!-- 이렇게 프로퍼티 태그에서 생성한 객체는 따로 참조할 수 없기 때문에
-	이런 객체를 생성할 때는 보통 이름을 주지 않느다.
-	즉 ID나 NAME 속성을 지정하지 않는다, -->
-	<bean id="bb1" class="ch29.d.BlackBox" >
-		<property name="maker" value="비트오토"/>
-		<property name="model" value="비트박스ok"/>
-	</bean>
-	<bean id="c1" class="ch29.d.Car">
-		<property name="maker" value="비트자동차"/>
-		<property name="model1" value="모델1"/>
-
-	</bean>
-	
-	<!-- 다른 객체의  -->
-	<!-- <bean id="c2" class="ch29.d.Car">
-		<property name="maker" value="비트자동차"/>
-		<property name="model1" ref="bb1"/>
-
-	</bean> -->
-	
-	
-	<!-- p 네임스페이스로 의존 객체를 주입할 때  
-	
-	
-	대소문자 주의
-	-->
-	<bean id="c3" class="ch29.d.Car"
-		p:maker="비트자동차" p:model="모델4" p:blackBox-ref="bb1"/>
-	
+  <bean id="bb1" class="ch29.d.BlackBox">
+    <property name="maker" value="비트오토"/>
+    <property name="model" value="비트박스OK"/>
+  </bean>
+  
+  <bean id="c2" class="ch29.d.Car">
+    <property name="maker" value="비트자동차"/>
+    <property name="model" value="모델1"/>
+    <property name="blackBox" ref="bb1"/>
+  </bean>
+  
+  <!-- p 네임스페이스로 의존 객체를 주입할 때 다음 형식으로 지정한다.
+       => p:프로퍼티명-ref="객체이름" -->
+  <bean id="c3" class="ch29.d.Car"
+        p:maker="비트자동차" p:model="모델4" p:blackBox-ref="bb1"/>
+        
+  
 </beans>
+
+
+
+
+
+
+

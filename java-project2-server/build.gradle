@@ -35,6 +35,15 @@ compile group: 'org.mybatis', name: 'mybatis', version: '3.5.0'
     // spring jdbc
 	compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.5.RELEASE'
     
+    // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+	compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.2'
+
+	// https://mvnrepository.com/artifact/log4j/log4j
+	//compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+    
     
     implementation 'com.google.guava:guava:26.0-jre'
     testImplementation 'junit:junit:4.12'
@@ -42,7 +51,7 @@ compile group: 'org.mybatis', name: 'mybatis', version: '3.5.0'
 
 // 만약 Gradle을 사용하여 프로젝트를 실행한다면 다음 클래스가 실행될 것이다.
 // $ gradle run
-mainClassName = 'com.eomcs.lms.App'
+mainClassName = 'com.eomcs.lms.ServerApp'
 
 
 

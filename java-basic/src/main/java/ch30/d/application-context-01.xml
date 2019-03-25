@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:component-scan base-package="ch30.d" />
+
+	<bean id="myAdvice" class="ch30.d.MyAdvice" />
+
+	<aop:config>
+
+		<!-- 어떤 관점으로 어떤 의도를 가지고 작업을 추가할 것인지 설정한다. -->
+		<aop:aspect id="aspect1" ref="myAdvice">
+
+			<!-- 작업을 끼워 넣을 위치를 지정한다. -->
+			<aop:pointcut id="pointcut1"
+				expression="execution(* ch30.d.X.*(..))" />
+
+			<aop:before pointcut-ref="pointcut1" method="doBefore" />
+			<aop:after pointcut-ref="pointcut1" method="doBefore" />
+			<aop:after-returning pointcut-ref="pointcut1"
+				method="doBefore" />
+			<aop:after-throwing pointcut-ref="pointcut1"
+				method="doBefore" />
+			<!-- 메서드 호출 전에 넣을 것인 후에 넣을 것인지 지정한다. -->
+			<aop:before pointcut-ref="pointcut1" method="doBefore" />
+			<aop:after pointcut-ref="pointcut1" method="doAfter" />
+			<aop:after-returning pointcut-ref="pointcut1"
+				method="doAfterReturning" />
+			<aop:after-throwing pointcut-ref="pointcut1"
+				method="doAfterThrowing" />
+
+		</aop:aspect>
+
+	</aop:config>
+</beans>
+
