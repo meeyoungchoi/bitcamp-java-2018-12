@@ -1,9 +1,14 @@
-// 30단계: HTTP 프로토콜을 적용하여 클라이언트를 웹브라우저로 변경하기
-// 
+// 31단계: tomcat서버 적용하기
+// =>웹 브라우저와의 통신을 전문적으로 담당할 서버를 도입한다.
+//=>ServerApp은 Tomcat에서 호출할 수 있도록 규칙에 따라 변경한다.
 // 작업
-// 1) RequestHandlerThread 변경하기
-//    => HTTP 프로토콜에 따라서 클라이언트 요청을 읽고 응답한다.
-//
+// 1) 톰켓 서버 설치
+//    => 
+//    =>/server
+//2) 자바 웹 프로젝트로 전환
+//=>build.gradle변경
+//  -에 'eclipse-wtp' 플러그인과 'war
+//=>
 package com.eomcs.lms;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -92,16 +97,14 @@ public class ServerApp {
             break;
         }
         
-        //예) GET /member/list HTTP/1.1
-        //예) GET /member/detail?no=10 HTTP/1.1  commandpath?requesturl
-        //예) GET /board/detail?no=1 HTTP/1.1
-        //예) GET /member/add?name=aaa&email=aaa@test.com&password=1111 HTTP/1.1 =>쿼리스트링
-        //requestURI[0] : /board/detail
-        //requestURI[1] : no = 1;
-        String[] requestURI= requestLine.split(" ")[1].split("\\?"); //split에서 \?라는 문자열을 전달하는 방법 =>\\? =>\?가 문자아
+        // 예) GET /member/list HTTP/1.1
+        // 예) GET /member/detail?no=10 HTTP/1.1
+        // 예) GET /member/add?name=aaa&email=aaa@test.com&password=1111 HTTP/1.1
+        // => requestURI[0] : /board/detail
+        // => requestURI[1] : no=1
+        String[] requestURI = requestLine.split(" ")[1].split("\\?");
         String commandPath = requestURI[0];
-         
-        
+            
         // 클라이언트에게 응답하기
         // => HTTP 프로토콜에 따라 응답 헤더를 출력한다.
         
@@ -119,13 +122,13 @@ public class ServerApp {
         }
         
         try {
-          //요청을 처리할 메서드가 사용할 Request, Response 준비하기
+          // 요청을 처리할 메서드가 사용할 Request, Response 준비하기
           ServletRequest request = new ServletRequest();
           if (requestURI.length > 1) {
-          //예) name=aaa&email=aaa@test.com&password=1111
-            request.setQueryString(requestURI[1]);
-          } 
-          
+            // 예) name=aaa&email=aaa@test.com&password=1111
+            request.setQueryString(requestURI[1]); 
+          }
+
           ServletResponse response = new ServletResponse(in, out);
           
           // 클라이언트 요청을 처리할 메서드를 찾았다면 호출한다.
@@ -133,10 +136,10 @@ public class ServerApp {
           out.println("Server: bitcamp");
           out.println("Content-Type: text/html; charset=UTF-8");
           out.println();
+          
           requestHandler.method.invoke(
-              requestHandler.bean,
-              request, response);// 메서드를 호출할 때 사용할 인스턴스 
-              // 메서드 파라미터 값
+              requestHandler.bean, // 메서드를 호출할 때 사용할 인스턴스 
+              request, response); // 메서드 파라미터 값
           
         } catch (Exception e) {
           out.printf("실행 오류! : %s\n", e.getMessage());
