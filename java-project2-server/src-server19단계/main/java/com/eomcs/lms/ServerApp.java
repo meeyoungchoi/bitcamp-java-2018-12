@@ -33,7 +33,7 @@
 //=>Component 애노테이션을 적용한다.
 //=>기존에 name 필드로 객체 이름을 지정하는 대신에 
 //3) ApplicationContext 변경
-//=> Componenct 애노테이션이 붙은 클래스엥 대해 객체를 생성하낟.
+//=> Component 애노테이션이 붙은 클래스엥 대해 객체를 생성하낟.
 //=> Component에 지정된 이름으로 객체를 지정한다.
 //4)A
 package com.eomcs.lms;
@@ -132,7 +132,6 @@ public class ServerApp {
         
         // 클라이언트에게 응답하기
         //=>클라이언트 요청을 처리할 객체는 빈 컨테이너에서 꺼낸다.(보드디에오임플을 빈컨테이너에서 꺼낸다.)
-        //리케스트를 가져와서 
         Command commandHandler = (Command) beanContainer.getBean(request);
         
         if (commandHandler == null) {
