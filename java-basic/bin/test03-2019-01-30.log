@@ -1,0 +1,5 @@
+java.lang.NumberFormatException: For input string: "ok"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at ch21.e.Test03.main(Test03.java:18)

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- xml 선언, 반드시 첫 번째로 와야 한다. 공백도 와서는 안된다. -->
+
+<!-- xml 태그의 형식에 대한 정보.
+루트 element(요소, 태그): configuration
+루트 element 안의 element를 자식element라고 부른다.
+가장 최고 꼭대기는 부모태그(element:요소)이다.
+property의 조상은 <dataSource,<environment,  <environments,<configuration> 이다.
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN" : 형식에 대한 공식적인(public) 이름
+ 형식을 정의한 파일: "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  
+  
+  <!-- mybatis 설정 파일의 루트 엘리먼트 -->
+<configuration>
+
+<!-- jdbc.properties팡리 정보 -->
+<properties resource="ch26/a/jdbc.properties"/>
+
+<!-- dbms 접속 정보 목록 -->
+  <environments default="development">
+  
+  <!-- 한개의 dbms 접속 정보 -->
+    <environment id="development">
+    
+    <!-- 트랜잭션 관리 방법 -->
+      <transactionManager type="JDBC"/>
+      
+      <!-- 커넥션풀 설정 -->
+      <dataSource type="POOLED">
+      
+      <!-- 로딩된 .properties 파일의 데이터를 꺼낼 때는 ${key} 문법을 사용한다. -->
+        <property name="driver" value="org.mariadb.jdbc.Driver"/>
+        <property name="url" value="jdbc:mariadb://localhost/bitcampdb"/>
+        <property name="username" value="bitcamp"/>
+        <property name="password" value="1111"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!-- sql문이 보관된 파일의 목록 -->
+  <mappers>
+  
+  <!-- sql이 보관된 파일의 경로 -->
+    <mapper resource="ch26/a/BoardMapper.xml"/><!-- sql매퍼파일:sql이 들어있는 팡리 -->
+  </mappers>
+</configuration>

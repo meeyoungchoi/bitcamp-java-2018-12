@@ -1,2 +1,4 @@
-# bitcamp-java-2018-12
-비트캠프(강남센터)자바 UI/UX 엔지니어링 및 응용 SW엔지니어링 양성과정
+# java-web-project
+
+## 서블릿 적용
+-기존의 command 객체를 서블릿으로 전환한다.
