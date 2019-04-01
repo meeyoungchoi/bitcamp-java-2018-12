@@ -1,10 +1,9 @@
-// 서블릿 들이 사용할 객체를 준비하는 서블릿
-//=>서블릿이 작업을 수행하려면 xxxxService 객체가 필요하다.
-//=>서비스 객체를 Spring IoC 컨테이너에 들어있다,.
-//=>이 클래스에서 바로 그 spring ioc컨테이너를 준비한다.
-//
+// 서블릿들이 사용할 객체를 준비하는 서블릿
+// => 서블릿이 작업을 수행하려면 XxxxService 객체가 필요하다.
+// => 서비스 객체는 Spring IoC 컨테이너에 들어 있다.
+// => 이 클래스에서 바로 그 Spring IoC 컨테이너를 준비한다.
+// 
 package com.eomcs.lms;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +16,9 @@ import com.eomcs.lms.context.RequestMappingHandlerMapping;
 @SuppressWarnings("serial")
 @WebServlet(
     urlPatterns = "/init",
-    loadOnStartup = 1)//클라잉언트가 요청하지 않아도 자동 생성된다.
+    loadOnStartup = 1)
 public class ServerApp extends HttpServlet {
+   
   // 보통 클래스에서 사용할 로그 출력 객체는 클래스의 스태틱 멤버로 선언한다.
   final static Logger logger = LogManager.getLogger(ServerApp.class);
 
@@ -27,9 +27,9 @@ public class ServerApp extends HttpServlet {
 
   // 클라이언트 요청을 처리할 메서드 정보가 들어 있는 객체
   RequestMappingHandlerMapping handlerMapping;
-  
+
   @Override
-  public void init(ServletConfig config) throws ServletException {
+  public void init() throws ServletException {
     // 이 클래스의 인스턴스가 생성된 후 톰캣이 제일 처음으로 호출하는 메서드
     // => 보통 이 클래스가 작업하는데 필요한 객체를 준비한다.
 
@@ -42,7 +42,6 @@ public class ServerApp extends HttpServlet {
         (RequestMappingHandlerMapping) iocContainer.getBean(
             RequestMappingHandlerMapping.class);
   }
-
 
   private void printBeans() {
     // 개발하는 동안 참고할 로그는 보통 debug 등급으로 출력한다.

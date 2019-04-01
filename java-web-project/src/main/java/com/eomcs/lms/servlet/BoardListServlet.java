@@ -11,15 +11,16 @@ import com.eomcs.lms.ServerApp;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.service.BoardService;
 
-@SuppressWarnings("serial")
 @WebServlet("/board/list")
+@SuppressWarnings("serial")
 public class BoardListServlet extends HttpServlet {
   
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(
+      HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     
-    //Spring IoC 컨테이너에서 BoardService 객체를 꺼낸다.
+    // Spring IoC 컨테이너에서 BoardService 객체를 꺼낸다.
     BoardService boardService = 
         ServerApp.iocContainer.getBean(BoardService.class);
     
@@ -27,6 +28,7 @@ public class BoardListServlet extends HttpServlet {
     
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
+    
     out.println("<html><head><title>게시물 목록</title></head>");
     out.println("<body><h1>게시물 목록</h1>");
     out.println("<p><a href='add'>새 글</a></p>");
@@ -42,6 +44,7 @@ public class BoardListServlet extends HttpServlet {
     }
     out.println("</table></body></html>");
   }
+
 }
 
 
