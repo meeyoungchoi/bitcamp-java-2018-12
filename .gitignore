@@ -1,5 +1,25 @@
-# Ignore Gradle project-specific cache directory
-.gradle
+#.gitignore
+node_modules/
+.vscode/
+.gradle/
+.settings/
+bin/
+build/
+temp/
+Debug/
+Release/
 
-# Ignore Gradle build output directory
-build
+.DS_Store
+.classpath
+.project
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*

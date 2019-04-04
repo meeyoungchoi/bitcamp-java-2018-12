@@ -1,19 +1,17 @@
---수업 테이블 삭제
+-- 수업 테이블 삭제 
 drop table if exists lms_lesson;
 
---회원 테이블 삭제
+-- 회원 테이블 삭제
 drop table if exists lms_member;
 
---게시판 테이블 삭제
+-- 게시판 테이블 삭제 
 drop table if exists lms_board;
 
---사진 게시판 테이블 삭제
+-- 사진 게시판 테이블 삭제
 drop table if exists lms_photo;
 
---사진 게시물 첨부 파일 테이블 삭제
+-- 사진 게시물 첨부 파일 테이블 삭제
 drop table if exists lms_photo_file;
-
-
 
 -- 수업 테이블 생성
 create table lms_lesson (
@@ -37,9 +35,14 @@ create table lms_member (
   photo varchar(255) comment '사진'
 ) comment '회원';
 
+create unique index UIX_lms_member_email
+  on lms_member ( -- 회원
+    email asc    -- 이메일
+  );
+  
 -- 게시물 테이블 생성
 create table lms_board (
-  board_id int not null auto_increment primary key comment '게시물 번호',
+  board_id int not null auto_increment primary key comment '게시물 식별 번호',
   conts text not null comment '내용',
   cdt datetime default now() comment '생성일',
   vw_cnt int default 0 comment '조회수' 
@@ -66,12 +69,8 @@ create table lms_photo_file (
     references lms_photo (photo_id)
 ) comment '사진 게시물 첨부파일 테이블'; 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
