@@ -30,7 +30,7 @@
     from 
       lms_member
     order by 
-      name asc
+      member_id asc
   </select>
   
   <select id="findByNo" resultMap="memberMap" parameterType="int">
@@ -64,7 +64,7 @@
       name like #{pattern1}
       or email like #{pattern1}
       or tel like #{pattern1}
-    order by name asc
+    order by member_id asc
   </select>
   
   <insert id="insert" parameterType="member">
