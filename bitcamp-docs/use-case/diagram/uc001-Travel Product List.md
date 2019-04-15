@@ -25,14 +25,15 @@
 1-1.고객이 여행후기 버튼을 쿨릭했을 때 기본적으로 조회되는 여행 후기 사진 리스트는 최신 날짜순으로 조회가 된다. \
 1-2. 고객이 최신 날짜순으로 조회가된 여행후기 화면에서 여행후기 사진 한개를 클릭하게 되면 '여행 후기 상세 조회(detail)' 페이지로 넘어간다.
 
-<img src="./travel-list.png" width="600" hegith="700">
+<img src="./travel-lis-datet.png" width="600" hegith="700">
 \
 <img src="./travle-detail.png" width="600" hegith="700">
 
 
 
 ## 시나리오
-1. 인기순 버튼 클릭(회원, 비회원)![인기순](./travel-list-ingi.jpg)
+1. 인기순 버튼 클릭(회원, 비회원)
+![인기순](./travel-list-ingi.png)
     - 고객이 여행후기를 '인기순' 조회 버튼을 클릭했을 때 여행 후기 사진은 날짜는 최신이면서 스마일 마크의 개수가 많은 사진 순으로 조회 된다.\
 <img src="./travel-list-ingi.png" width="600" hegith="700">\
 
