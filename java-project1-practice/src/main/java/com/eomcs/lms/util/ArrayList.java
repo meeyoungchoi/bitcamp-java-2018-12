@@ -1,34 +1,41 @@
+//18과제 : 제넥릭 적용
 package com.eomcs.lms.util;
 
 import java.util.Arrays;
 
-public class ArrayList<E> {
+public class ArrayList<T> {
   static final int DEFAULT_CAPACITY = 10;
-  Object[] list;
+  Object[] elementData;
   int size = 0;
 
   public ArrayList() {
-    list  = new Object[DEFAULT_CAPACITY];
+    elementData  = new Object[DEFAULT_CAPACITY];
   }
 
   public ArrayList(int initialCapacity) {
     if (initialCapacity > DEFAULT_CAPACITY)
-      list = new Object[initialCapacity];
+      elementData = new Object[initialCapacity];
     else
-      list = new Object[DEFAULT_CAPACITY];
+      elementData = new Object[DEFAULT_CAPACITY];
   }
 
-  public Object[] toArray() {
-    return Arrays.copyOf(list, size);
+  public T[] toArray(T[] a) {
+    if (a.length < size) {
+      return (T[]) Arrays.copyOf(elementData, size, a.getClass());
+    }
+    System.arraycopy(elementData, 0, a, 0, size);
+    if (a.length > size) 
+      a[size] = null;
+    return a;
   }
 
   public void add(Object obj) {
-    if (size >= list.length) {
-      int oldCapacity = list.length;
+    if (size >= elementData.length) {
+      int oldCapacity = elementData.length;
       int newCapacity = oldCapacity + (oldCapacity >> 1);
-      list = Arrays.copyOf(list, newCapacity);
+      elementData = Arrays.copyOf(elementData, newCapacity);
     }
 
-    list[size++] = obj;
+    elementData[size++] = obj;
   }
 }
