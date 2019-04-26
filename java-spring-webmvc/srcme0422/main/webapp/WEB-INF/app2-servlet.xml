@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+      xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+  
+  <context:component-scan base-package="bitcamp.app2"/> <!-- 패키지를 뒤지면서 해당 객체를 만드는 일을한다. -->
+  
+  <!-- component-scan태그로는 @MatrixVariable 애노테이션을 처리할 객체를 추가하지 않는다.
+        이 애노테이션을 처리하려면 다음의 태그를 선어하여 관련 객체를 간접적으로 등록해야 한다. -->
+        <mvc:annotation-driven enable-matrix-variables="true"/>
+  
+  <!-- 기존의 뷰 리졸버를 대체한다. -->
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    <property name="prefix" value="/WEB-INF/jsp2/"/>
+    <property name="suffix" value=".jsp"/>
+</bean>
+  <!-- autowiredannotationbeanpossessannotation을 처리하는 객체를 등록해야 한다.
+  내가 붙여 놓은 애노테이션을 ioc 컨테이너가 그걸 처리할놈한테 말해서 처리하게 한다.
+  그러므로 이거는 애노테이션을 처리할 놈을 만들어 놓는것이다.
+  @component sevice repository annotation pathvariable...
+  //기억해야할 이름이 너무 많다.
+  그래서 암기하지 말고 단축태그인  -->
+  <context:annotation-config/> <!-- 하지만 여기에는 매트릭스 베이어블 애노테이션을 처리하는 거는 안담겨있다.
+  하지만 얘가 있으면 일일이 선언할 필요학 없다. -->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

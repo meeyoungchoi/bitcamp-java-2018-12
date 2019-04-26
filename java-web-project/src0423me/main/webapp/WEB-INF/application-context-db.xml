@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <context:property-placeholder location="classpath:com/eomcs/lms/conf/jdbc.properties"/>
+
+<!-- datasource는 db커넥션 풀이다. -->
+  <bean id="dataSource" 
+        class="org.apache.commons.dbcp2.BasicDataSource" 
+        destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+  </bean>
+  
+  <!--자바 버튜철머신이 클래스를 찾을 때 뒤지는 경로: classpath
+  일단 일차적으로 web-inf밑에 classes를 먼저 뒤진다. 
+  리소시스 밑에 있는거는 빈 메인 컴  ... 즉 클래스 경로에 들어간다.
+  트랜잭션 메니저는 케낵션 객체에 대해서 커밋 롤백을 관리한다.
+  기본 디폴트 이름을 트랜잭션 메니저로 안하고 txManager로 설정하면 tx-context.xml의 어드바이스를 설정할때 트랜잭션 메니저를 알려주는 코드를 어드바이스 밑에 적어줘야 한다, -->
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+ 
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
