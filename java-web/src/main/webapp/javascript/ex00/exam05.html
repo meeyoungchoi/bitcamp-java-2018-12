@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+  console.log("출력1");
+</script>
+</head>
+<body>
+  <h1>5.html 태그와 dom 트리 객체</h1>
+  <!--  특정 태그를 찾아서 그 태그의 값을 바꿀수 있다.
+  또한 버튼 태그를 눌렀을 때 특정 함수를 호출할수 있다 -->
+  <p id="p1">오호라!</p>
+  <button id="btn1">확인</button>
+
+  <script>
+  var tag1 = document.getElementById("btn1");
+  //tag1버튼을 누르면 보고해줘(자바의 옵저버 패ㅓㄴ)
+  //onclick메서드는 웹브라우저 뒤쪽에서 호출한다. =>콜백함수
+  tag1.onclick = function() {//Observer 패턴: 리스너 => 이벤트 리스너 =>콜백 함수(callback; cb)
+    var tag2 = document.getElementById("p1");
+    tag2.innerHTML = "비트캠프!";
+  };
+    </script>
+
+
+
+</body>
+</html>

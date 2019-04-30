@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+console.log("출력1");
+</script>
+</head>
+<body>
+<h1>3.함수정의와 호출</h1>
+<!-- 자바크스립트는 타입을 구분하지 않는다. 타입을 적지 않는다. 아규먼트를 담을 파라미터를 선언할 때는 타입을 적지 않는다. -->
+<script>
+function plus(a,b) {
+	  return a + b;
+}
+
+console.log(plus(10, 20));
+
+var ok = plus; 
+
+console.log(ok(100, 200));
+</script>
+
+
+
+</body>
+</html>

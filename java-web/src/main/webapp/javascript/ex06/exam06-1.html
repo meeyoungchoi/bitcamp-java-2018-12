@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex06</title>
+<body>
+<h1>이벤트 - a 태그의 기본 동작 중단시키기</h1>
+<p>a 태그의 링크를 클릭하면 href 에 등록한 url을 요처하는 것이
+a 태그의 기본 동작이다.</p>
+
+<a id="link1" href="http://wwww.daum.net" 
+onclick="alert('ok!')">a태그 기본동작 계속</a><br>
+<!-- 기본 동작을 막고 싶다면 onclick 속성에 작성하는 스크립트의  리턴 값을 false로 지정하라! -->
+<a id="link2" href="http://wwww.daum.net"
+ onclick="alert('ok!');return false">a태그의 기본 동작 취소1</a><br>
+ 
+ <!-- a 태그의 onclick에 작성할 스크립트가 많다면 별도의 함수에 작성하고 호출한다.
+ 이때 함수의 리턴 값에 따라 a 태그의 기본 동작을 제어하는 기법이 
+ 다음 예이다. -->
+<a id="link3" href="http://wwww.daum.net" onclick="return f1()">a태그의 기본 동작 취소2</a><br>
+
+<!-- 태그.onclick= 함수() {} -->
+<a id="link4" href="http://wwww.daum.net">a태그의 기본 동작 취소3</a><br>
+
+<a id="link5" href="http://wwww.daum.net">a태그의 기본 동작 취소5</a><br>
+
+<a id="link6" href="http://wwww.daum.net">a태그의 기본 동작 취소5</a><br>
+<script>
+"use strict"
+
+function f1() {
+  alert("ok!");
+  return false
+  
+}
+
+document.querySelector("#link3").onclick = function() {
+  alert("ok!");
+  return false; //
+}
+
+
+document.querySelector("#link4").onclick = function(e) {
+  e.prebentDefault();//a 태그의 기본 동작을 비활성화 한다..
+  alert("ok!");
+  
+}
+
+document.querySelector("#link5").addEventListener("click",function() {
+  //addEventListerer()로 함수를 등록한다면
+  //Event.preventDefault()를 사용하여 a 태그의 기본 동작을 취소해야 한다
+  alert("ok!");
+  //return true;//addEventLister()로 함수를 등록하면 
+  // return 값으로 a 태그의 기본 동작을 취소할 수 없다.
+});      
+
+document.querySelector("#link6").addEventListener("click",function() {
+  //addEventListerer()로 함수를 등록한다면
+  //Event.preventDefault()를 사용하여 a 태그의 기본 동작을 취소해야 한다
+  alert("ok!");
+  //return true;//addEventLister()로 함수를 등록하면 
+  // return 값으로 a 태그의 기본 동작을 취소할 수 없다.
+}); 
+
+</script>
+</body>
+</html>
+
+
+
+
+

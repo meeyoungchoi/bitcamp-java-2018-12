@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex06</title>
+<body>
+<h1>이벤트 - form의 서브밋기본 동작 중단시키기</h1>
+<p>form의 submit 버튼을 클릭하면 서버에 요청을 한다.</p>
+
+<form onsubmit="return false">
+  <button>전송막기1</button>
+
+</form>
+
+<form id="form2">
+  <button>전송막기2</button>
+
+</form>
+
+<form id="form3">
+  <button>전송막기3</button>
+  </form>
+  
+  <form id="form4">
+  
+  <button>전송막기4</button>
+  </form>
+  
+
+<script>
+"use strict"
+
+document.quertSelector("#form2").onsubmit = () => {
+  return false;
+}
+
+document.quertSelector("#form3").onsubmit = () => {
+  e.preventDefault();
+}
+</script>
+</body>
+</html>
+
+
+
+
+
