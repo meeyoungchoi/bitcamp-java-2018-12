@@ -17,20 +17,15 @@
   }
 
   #state {
-    /*box-sizing: border-box;*/
-    /*content의 크리글 의미한다.*/
     width: 16px;
     height: 16px;
-    display: inline-block; /*width, height에 따라서 결정된다.*/
-    
-    position: relative; /*현재 위치를 기준으로 상대적으로 내린다.*/
-    top: 5px; /*꼭대기에서 내린다.*/
-    /* left: 10px; */
+    display: inline-block;
+    position: relative;
+    top: 5px;
     padding: 0px;
-    margin: 0 0 0 3px; /*왼쪽 편만 살짝 때겠다.*/
-    background: url('img03.jpg') no-repeat 20px -1px; /*왼쪽에서 20만큼 민다. 위로는 -1만큼 올렸다.*/
+    margin: 0 0 0 3px;
+    background: url('img03.jpg') no-repeat 20px -1px;
     background-size: 220px;
-
   }
 
   </style>
@@ -54,7 +49,7 @@ btn.addEventListener('click', function() {
   // 입력 상자에 들어있는 값을 검사하여 이메일 중복 여부에 따라
   // 아이콘을 출력한다.
   if (email.value == "hong@test.com") { // 존재하는 사용자일 경우
-    state.style.backgroundPosition = "-204px -1px"; /*왼쪼 위쪽 -204px -36px*/
+    state.style.backgroundPosition = "-204px -1px";
   } else {
     state.style.backgroundPosition = "-167px -1px";
   }

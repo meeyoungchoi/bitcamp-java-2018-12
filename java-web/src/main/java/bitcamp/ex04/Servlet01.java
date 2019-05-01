@@ -60,7 +60,7 @@ public class Servlet01 extends GenericServlet {
 //    - 어떻게? 원래 코드 값을 아스키(ASCII) 문자 코드로 변환한다.
 //    - ASCII 코드는 7비트이기 때문에 데이터를 주고 받을 때 깨지지 않을 것이다.
 //    - URL 인코딩이란? 문자 코드의 값을 ASCII 코드화시키는 것이다.
-//    - 예) "ABC가각"을 전송한다고 가정하자                                                                                                         
+//    - 예) "ABC가각"을 전송한다고 가정하자
 //      "ABC가각"의 문자 코드(UTF-8) 값 : 414243EAB080EAB081
 //      ASCII 문자코드로 변환 : 
 //      => 코드 값이 이미 ASCII 라면 그대로

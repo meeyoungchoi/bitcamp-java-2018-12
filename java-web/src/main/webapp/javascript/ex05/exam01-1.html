@@ -19,7 +19,6 @@
 
 // 자바스크립트는 태그를 다룰 때 사용할 도구를 제공한다.
 // 그 도구를 "DOM API"라 부른다.
-//자바스크립트에서 태그를 제어하기 위해 사용
 //
 // document 객체
 // => 자바스크립트에서 기본으로 제공하는 객체이다.
@@ -28,10 +27,8 @@
 //
 // getElementById("태그아이디")
 // => Element 객체 리턴
-var e1 = document.getElementById("header4");//header4라는 아이디를 갖는 element를 찾아라
-e1.accessKey = "ddk";
-console.log("e1.accessKey");
-e1.click();
+var e1 = document.getElementById("header4");
+
 console.log(e1.name); // undefined
 console.log(e1.localName); // 태그명
 console.log(e1.constructor.name); // 객체의 생성자 이름

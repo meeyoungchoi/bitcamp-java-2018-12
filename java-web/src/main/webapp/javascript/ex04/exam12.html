@@ -31,7 +31,7 @@ Score.prototype.aver = function() {
 Score.count = 0;
 Score.f = function() {
 	console.log("Hello!");
-}
+};
 
 // 객체 생성 및 초기화
 var s = new Score("홍길동", 100, 100, 100);
@@ -42,10 +42,9 @@ console.log(s.aver())
 
 // f()는 prototype에 저장된 함수가 아니다. 
 // 따라서 객체를 통해 호출할 수 없다.
-s.f(); // 실행 오류! => s.f is not a function
+//s.f(); // 실행 오류!
 
 // count와 f()는 생성자를 통해 직접 사용해야 한다.
-//함수 객체도 객체이다,
 Score.count = 100;
 Score.f();
 

@@ -12,7 +12,6 @@
 <script>
 "use strict"
 
-//특정 사이트에서 값을 가져오고싶을 때
 // AJAX로 요청하는 서버를 자신이 통제할 수 있다면,
 // 언제든 응답 헤더에 "Access-Control-Allow-Origin"을 붙여 
 // 다른 사이트에서 AJAX 요청을 할 수 있도록 허락할 수 있다.
@@ -30,11 +29,6 @@ document.querySelector("#btn1").onclick = () => {
     xhr.open("GET", "proxy.jsp", false);
     xhr.send();
     ta.value = xhr.responseText;
-    
-    // 이 HTML 문사는 www.zdnet.co.kr 에서 다운로드 받은 것이 아니기 때문에
-    // 웹브라우저는 응답받은 결과를 리턴하지 않는다.
-    // => 실행하면 다음과 같은 오류가 뜬다.
-    // No 'Access-Control-Allow-Origin' header is present on the requested resource.
 };
 
 </script>

@@ -28,7 +28,7 @@ public class PhotoBoardController {
   
   @GetMapping("form")
   public void form(Model model) {
-    List<Lesson> lessons = lessonService.list(0,0);
+    List<Lesson> lessons = lessonService.list();
     model.addAttribute("lessons", lessons);
   }
   
@@ -78,7 +78,7 @@ public class PhotoBoardController {
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     PhotoBoard board = photoBoardService.get(no);
-    List<Lesson> lessons = lessonService.list(0,0);
+    List<Lesson> lessons = lessonService.list();
     model.addAttribute("board", board);
     model.addAttribute("lessons", lessons);
     return "photoboard/detail";

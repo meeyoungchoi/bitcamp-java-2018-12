@@ -17,7 +17,7 @@ pageContext.setAttribute("names", new String[]{"홍길동","임꺽정","유관�
 ${names[0]}<br>
 ${names[1]}<br>
 ${names[2]}<br>
-${names[3]}<br> <%--없는 인덱스를 가리킨다해서 에러가 뜨지 않는다. --%>
+${names[3]}<br>
 
 </body>
 </html>

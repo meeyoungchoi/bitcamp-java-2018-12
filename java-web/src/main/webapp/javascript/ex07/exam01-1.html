@@ -33,11 +33,10 @@ document.querySelector("#btn1").onclick = () => {
     
     //3) 서버에 HTTP 요청을 보낸다.
     // => 동기 방식으로 연결되었을 경우 서버에서 응답할 때까지 리턴하지 않는다.
-    xhr.send();//서버에 http프로토콜 규칙에 따라서 요청 정보를 보낸다.
-    //서버에서 응답이 올때까지 리턴하지 않는다.
+    xhr.send();
     
     //4) 서버가 응답한 콘텐트를 꺼낸다.
-    ta.value = xhr.responseText;//서버에서 응답한 데이터는 responseText이 변수에 보관되어 있다.
+    ta.value = xhr.responseText;
 };
 
 </script>

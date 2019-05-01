@@ -11,13 +11,11 @@
 <title>JSTL</title>
 </head>
 <body>
-<%--i18n --%>
 <h1>JSTL - fmt:parseDate</h1>
 <pre>
 - 문자열로 지정된 날짜 값을 java.util.Date 객체로 만들기
 </pre>
 
-<%--문자열을 date객체로 바꿀때 --%>
 <fmt:parseDate value="2018-10-08" pattern="yyyy-MM-dd" var="d1"/>
 <fmt:parseDate value="10/08/2018" pattern="MM/dd/yyyy" var="d2"/>
 

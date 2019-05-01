@@ -21,14 +21,14 @@
 // => HTMLCollection 객체 리턴
 // => HTMLCollection은 배열이 아니다!
 //
-var el = document.getElementsByTagName("h2");//태그 이름으로 찾을때
+var el = document.getElementsByTagName("h2");
 
 // HTMLCollection 객체는 배열은 아니지만, 
 // 배열처럼 length 프로퍼티가 있고,
 // 인덱스 번호를 이용하여 찾은 태그들을 꺼낼 수 있다.
 // => 그래서 반복문을 사용할 수 있다.
-for (var i = 0; i < el.length; i++) {//html컬렉션객체에서 값 꺼내기
-    console.log(el[i].innerHTML);
+for (var i = 0; i < el.length; i++) {
+    console.log(i, el[i].innerHTML);
 }
 console.log("--------------------------");
 
@@ -46,8 +46,8 @@ console.log("--------------------------");
 // HTMLCollection은 iterable 규칙을 구현하였기 때문에 
 // for...of 반복문을 사용할 수 있다.
 // => for (var 변수 of 배열 또는 iterable 구현체) {...}
-for (var e of el) {//html 컬렉션 객체에서 값 꺼내기
-    console.log(el, e.innerHTML);
+for (var e of el) {
+    console.log(i, e.innerHTML);
 }
 
 </script>

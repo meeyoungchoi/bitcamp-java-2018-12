@@ -24,9 +24,7 @@
 
 <%-- 지정된 URL을 요청하고 서버로부터 받은 콘텐트를 contents라는 이름으로 
      PageContext 보관소에 저장한다. --%>
-<c:import url="${url1}" var="contents"/> <%--서버에 import를 요청한다. 그 저장한 결과를 contents에 담는다.
-변수를 지정하지 않으면  <c:import url="${url1}" var="contents"/> 이자리에 결과를 담는다.
-첫번째거 추천--%>
+<c:import url="${url1}" var="contents"/>
 
 <textarea cols="120" rows="20">${pageScope.contents}</textarea>
 

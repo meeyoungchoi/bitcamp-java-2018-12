@@ -17,7 +17,7 @@
 - 보관소에 저장된 값을 찾지 못하면 빈 문자열을 리턴한다.
 </pre> 
 <%
-session.setAttribute("name", null);//한번 세션이 만들어지면 사라지지 않는다.
+session.setAttribute("name", null);
 application.setAttribute("name", null);
 
 pageContext.setAttribute("name", "홍길동");
@@ -26,9 +26,7 @@ session.setAttribute("name", "유관순");
 application.setAttribute("name", "안중근");
 %>
 
-<h2>보관소에서 값 꺼내기 : ${name}</h2><%--scope을 지정해주지 앟으면  --%>
-<%--<%=application.getAttribute("name") --%>
-
+<h2>보관소에서 값 꺼내기 : ${name}</h2>
 PageContext 보관소 : ${pageScope.name}<br>
 ServletRequest 보관소 : ${requestScope.name}<br>
 HttpSession  보관소 : ${sessionScope.name}<br>

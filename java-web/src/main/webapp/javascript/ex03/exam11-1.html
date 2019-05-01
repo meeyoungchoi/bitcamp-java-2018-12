@@ -16,29 +16,26 @@
 //    클로저는 존재하지 않는 변수를 사용하는 상황이 발생한다.
 //    그래서 이런 경우를 방지하고자, 
 //    클로저에서 사용하는 바깥 함수의 로컬 변수는 클로저의 별도 메모리에 복제된다.
-// 자기가 참조하는 그 로컬변수를 복제해 놓는다.
-// 
+//
+//
 
-function createGreetin(name) {
-  var message = name + "님 반갑습니다.";
+function createGreeting(name) {
+  var message = name + "님 반갑습니다!";
   
-  //클로저 만들기
+  // 클로저 만들기
   var f = function() {
-    console.log(message);//클로저에서 바깥 함수의 변수를 사용하기
-  }
+    console.log(message); // 클로저에서 바깥 함수의 변수를 사용하기
+  };
   
-  return f;//호출변수는 호출이 끝나면 사라져야 한다.
-  //로컬변수가 사라지는 상황을 없애기 위해서 
-  //클로저가 바깥함수의 로컬변수를 사용한다면 로컬변수가 사라지기 전에 쓸수 있도록 복제를 해놓는다.
-  //클로저가 바깥함수의 로컬변수를 사용하게 되면 자기가 사용하는 바깥함스의 로컬변수를 따로 복제해 놓는다.
-  //따라서 함수는 자기가 복제한 로컬변수를 가리킨다.
-} 
+  return f;
+}
 
-var test1 = createGreetin("홍길동");
-var test2 = createGreetin("임꺽정");
+var test1 = createGreeting("홍길동");
+var test2 = createGreeting("임꺽정");
 
 test1();
 test2();
+
 </script>
 
 </body>

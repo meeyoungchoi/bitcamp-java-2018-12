@@ -33,7 +33,6 @@ pageContext.setAttribute("qs", "name=홍길동&age=20&tel=1111-2222");
 %>
 
 <ul>
-<%--문자열을 자를때 --%>
 <c:forTokens items="${pageScope.qs}" var="n" delims="&">
     <li>${n}</li>
 </c:forTokens>

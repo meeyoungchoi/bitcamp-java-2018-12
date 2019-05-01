@@ -19,7 +19,7 @@
 1: ${requestScope.name1}<br>
 2: ${pageScope.name1}<br>
 
-<c:set var="name2" value="임꺽정"/> <%--기본은 pageContext에 저장한다. --%>
+<c:set var="name2" value="임꺽정"/>
 1: ${requestScope.name2}<br>
 2: ${pageScope.name2}<br>
 
@@ -32,25 +32,23 @@
 <%--
 Member m1 = (Member) pageContext.getAttribute("m1");
 if (m1 == null) {
-m1 = new Member();
-pageContext.setAttribute("m1",m1);
+  m1 = new Member();
+  pageContext.setAttribute("m1", m1);
 }
  --%>
- 
 <jsp:setProperty name="m1" property="no" value="100"/>
-<%--
+<%-- 
 m1.setNo(100);
- --%>
- 
- <%--객체를 지정할 때는 el로 지정해라 --%>
+--%>
+
 <c:set target="${pageScope.m1}" property="email" value="hong@test.com"/>
 <%--
 Object obj = pageContext.getAttribute("m1");
-obj.getClass().getMethod("setEmail", String.class);
+Method m = obj.getClass().getMethod("setEmail", String.class);
 m.invoke(obj, "hong@test.com");
 
-=>m1.setEmail("hong@test.com");
- --%>
+=> m1.setEmail("hong@test.com");
+--%>
 
 ${pageScope.m1.no}<br>
 ${pageScope.m1.email}<br>

@@ -11,14 +11,10 @@
     => absolute 태그는 width, height를 지정하지 않으면 콘텐츠의 크기에 맞춘다.
     => 기준이 되는 태그가 움직이면 자신도 같이 움직인다.
   */
-
-    html {
-      border: 10px solid navy;
-      position: relative; /*html의 안쪽 테두리를 기준으로 10px 떨어뜨린다.*/
-      /*ablolute 또는 relativer를 기준으로 자신의 위치를 지정한다.*/
-      /*absolute의 기준이 되고싶을때 relativer를 적어로
-      다른 자식들 중에서 absoulute를 기준으로 할 때 사용*/
-    }
+  html {
+    border: 10px solid navy; 
+    position: relative;
+  }
 
   body {
     border: 1px dashed black;
@@ -38,8 +34,11 @@
     background-color: gray;
   }
 
-  #d1 {background-color: red;
-  position: relative;}
+  #d1 {
+    background-color: red;
+    position: relative;
+  }
+
   #d11 {
     background-color: orange;
     position: relative;

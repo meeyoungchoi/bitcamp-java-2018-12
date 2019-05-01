@@ -3,84 +3,79 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="${contextRootPath}/css/common.css">
+  <title>회원가입</title>
+  <jsp:include page="../commonCss.jsp"/>
 </head>
 <body>
 
-  <jsp:include page="../header.jsp" />
-
-<div class="container">
-  <h1>새 회원</h1>
-  <form action='add' method='post'>
-  <div class="form-group row">
-    <lable for="title" class="col-sm-2 col-form-label">회원</lable>
-     <div class="col-sm-8">
-      <textarea class="form-control" id="name" 
-                name='tname' rows='5'>${member.name}</textarea>
-    </div>
-  </div>
+  <jsp:include page="../header.jsp" /> 
   
+  <div class="container">
   
+    <h1>회원가입</h1>
+    <form action='add' method='post'>
     <div class="form-group row">
-    <lable for="contents" class="col-sm-2 col-form-label">수업</lable>
-     <div class="col-sm-8">
-      <textarea class="form-control" id="contents" 
-                name='contents' rows='5'>${member.contents}</textarea>
-    </div>
-  </div>
+          <div id="bit-photo" class="col-3">
+          
+              <img src='${contextRootPath}/images/default.jpg' class="bit-photo img-fluid rounded-circle mx-auto d-block" alt="Responsive image"><br>
+            
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">사진</span>
+              </div>
+              <div class="custom-file">
+                <input type="file" name='photoFile' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">사진 선택</label>
+              </div>
+            </div>
+            
+          </div> <!-- .bit-photo -->
+          
+          <div class="bit-pro col-7">
 
+            <div class="form-group row">
+              <label for="name" class="col-sm-2 col-form-label">이름</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" id="name"/>
+              </div>
+            </div>
 
-<div class="form-group row">
-    <lable for="email" class="col-sm-2 col-form-label">이메일</lable>
-     <div class="col-sm-8">
-      <textarea class="form-control" id="email" 
-                name='email' rows='5'>${member.email}</textarea>
-    </div>
-  </div>
-  
-  
-<div class="form-group row">
-    <lable for="password" class="col-sm-2 col-form-label">암호</lable>
-     <div class="col-sm-8">
-      <textarea class="form-control" id="password" 
-                name='password' rows='5'>${member.password}</textarea>
-    </div>
-  </div>
+            <div class="form-group row">
+              <label for="password" class="col-sm-2 col-form-label">비밀번호</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" id="password"/>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="email" class="col-sm-2 col-form-label">ID (이메일)</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" name="email" id="email"/>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="tel" class="col-sm-2 col-form-label">전화번호</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="tel" id="tel"/>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button class="btn btn-primary">등록</button>
+                <a class="btn btn-primary" href='./'>회원목록</a>
+              </div>
+            </div>    
+            
+          </div> <!-- .bit-pro -->
+          
+        </div> <!-- .row -->
     
+    </form>
     
-      
-<div class="form-group row">
-    <lable for="photo" class="col-sm-2 col-form-label">사진</lable>
-     <div class="col-sm-8">
-      <textarea class="form-control" id="photo" 
-                name='photo' rows='5'>${member.photo}</textarea>
-    </div>
-  </div>
+  </div> <!-- .container -->
   
-  
-  <div class="form-group row">
-    <lable for="tel" class="col-sm-2 col-form-label">전화</lable>
-     <div class="col-sm-8">
-      <textarea class="form-control" id="tel" 
-                name='tel' rows='5'>${member.tel}</textarea>
-    </div>
-  </div>
-   
-   <div class="form-group row">
-    <div class="col-sm-10">
-      <button class="btn btn-primary">등록</button>
-      <a class="btn btn-primary" href='.'>목록</a> 
-    </div>
-  </div>
-  </form>
-</div><!-- .container -->
- 
- <jsp:include page="../javascript.jsp"/>
+  <jsp:include page="../javascript.jsp"/>
 </body>
 </html>
-
-
-
-
-

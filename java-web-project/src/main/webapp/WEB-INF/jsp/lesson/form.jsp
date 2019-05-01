@@ -1,94 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
+
 <html>
 <head>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="${contextRootPath}/css/common.css">
+  <title>강의 등록</title>
+  <jsp:include page="../commonCss.jsp"/>
 </head>
 <body>
 
-<jsp:include page="../header.jsp"/>
+  <jsp:include page="../header.jsp" />
 
-
-<div class="container">
-<h1>새 수업</h1>
-<form action='add' method='post'>
-<div class="form-group row">
-    <label for="title" class="col-sm-2 col-form-label">수업</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="title" 
-                name='title' rows='5'>${lesson.title}</textarea>
-    </div>
-  </div>
-
-
-<div class="form-group row">
-    <label for="contents" class="col-sm-2 col-form-label">수업</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="title" 
-                name='title' rows='5'>${lesson.title}</textarea>
-    </div>
-  </div>
+  <div class="container">
   
-  <div class="form-group row">
-    <label for="startDate" class="col-sm-2 col-form-label">시작일</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="startDate" 
-                name='title' rows='5'>${lesson.startDate}</textarea>
-    </div>
-  </div>
-
-
-  <div class="form-group row">
-    <label for="endDate" class="col-sm-2 col-form-label">종료일</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="endDate" 
-                name='title' rows='5'>${lesson.endDate}</textarea>
-    </div>
-  </div>
-
-<div class="form-group row">
-    <label for="totalHours" class="col-sm-2 col-form-label">총 교육시간</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="totalHours" 
-                name='title' rows='5'>${lesson.totalHours}</textarea>
-    </div>
-  </div>
-  
-  <div class="form-group row">
-    <label for="totalHours" class="col-sm-2 col-form-label">총 교육시간</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="totalHours" 
-                name='title' rows='5'>${lesson.totalHours}</textarea>
-    </div>
-  </div>
-  
+    <h1>강의등록</h1>
+    <form action='add' method='post'>
     <div class="form-group row">
-    <label for="dayHours" class="col-sm-2 col-form-label">일 교육시간</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="dayHours" 
-                name='dayHours' rows='5'>${lesson.dayHours}</textarea>
-    </div>
-  </div>
-  
-      <div class="form-group row">
-    <label for="dayHours" class="col-sm-2 col-form-label">일 교육시간</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="dayHours" 
-                name='dayHours' rows='5'>${lesson.dayHours}</textarea>
-    </div>
-  </div>
-  
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button class="btn btn-primary">등록</button>
-      <a class="btn btn-primary" href='.'>목록</a> 
-    </div>
-  </div>
-  </form>
-</div><!-- .container -->
+       <label for="title" class="col-sm-2 col-form-label">수업명</label>
+       <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" id="title"/>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label for="contents" class="col-sm-2 col-form-label">설명</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="contents" name='contents' rows='5'></textarea>
+          </div>
+        </div>
+         
+        <div class="form-group row">
+          <label for="date" class="col-sm-2 col-form-label">기간</label>
+          <div class="col-sm-5">
+            <p>시작일</p>
+            <input class="form-control" type='date' name='startDate'/>
+          </div>
+          <div class="col-sm-5">
+            <p>종료일</p>
+            <input class="form-control" type='date' name='endDate'/>
+          </div>
+        </div>
+         
+        <div class="form-group row">
+          <label for="totalHours" class="col-sm-2 col-form-label">총수업시간</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" name="totalHours" id="totalHours"/>
+          </div>
+        </div>
 
+        <div class="form-group row">
+          <label for="dayHours" class="col-sm-2 col-form-label">일수업시간</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" name="dayHours" id="dayHours"/>
+          </div>
+        </div>
+                 
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <a class="btn btn-primary" href='./'>강의목록</a>
+            <button class="btn btn-primary">등록</button>
+          </div>
+        </div>         
+    
+    </form>
+    
+  </div> <!-- .container -->
+  
+  
 <jsp:include page="../javascript.jsp"/>
 </body>
 </html>

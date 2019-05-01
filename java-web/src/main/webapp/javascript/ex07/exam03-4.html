@@ -28,15 +28,15 @@ document.querySelector("#btn1").onclick = () => {
 
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4) {
-          // 서버에 존재하지 않는 자원을 요청했을 때,
-          // 또는 서버의 자원을 실행 중에 오류가 발생했을 때
-          // 그때는 정상적인 응답이 아니기 때문에 responseText를 사용해서는 안된다.
-          // 
-          // 다음의 출력 결과를 확인해보라! 
-          r.value = xhr.responseText;
-          
-          // 해결책?
-          // => 다음 예제를 보라!
+        	// 서버에 존재하지 않는 자원을 요청했을 때,
+        	// 또는 서버의 자원을 실행 중에 오류가 발생했을 때
+        	// 그때는 정상적인 응답이 아니기 때문에 responseText를 사용해서는 안된다.
+        	// 
+        	// 다음의 출력 결과를 확인해보라! 
+        	r.value = xhr.responseText;
+        	
+        	// 해결책?
+        	// => 다음 예제를 보라!
         }
     };
     

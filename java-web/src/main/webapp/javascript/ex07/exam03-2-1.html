@@ -21,12 +21,6 @@ var ta = document.querySelector("#ta");
 
 document.querySelector("#btn1").onclick = () => {
     var xhr = new XMLHttpRequest();
-    // 서버에서 응답이 왔을 때 호출될 메서드를 등록한다.
-    // 서버에 연결하기 전에 등록해야 한다.
-    // 즉 open()을 호출하기 전에 등록해야 한다.
-    xhr.onreadystatechange = () => {
-        console.log("서버에서 응답이 왔나?")
-    };
     
     // 비동기 요청을 하려면 3번 파라미터를 true로 설정해야 한다.
     xhr.open("GET", "test3.jsp", true);
@@ -42,8 +36,8 @@ document.querySelector("#btn1").onclick = () => {
     
     // 해결책?
     // => 서버에서 응답을 완료했을 때 결과를 꺼내라!
-    //=>다음 예제를 보라
-
+    // => 다음 예제를 보라!
+ 
 };
 
 </script>

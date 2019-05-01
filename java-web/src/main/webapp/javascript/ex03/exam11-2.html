@@ -17,22 +17,7 @@
 //    그래서 이런 경우를 방지하고자, 
 //    클로저에서 사용하는 바깥 함수의 로컬 변수는 클로저의 별도 메모리에 복제된다.
 //
-// 
-
-function createGreetin(name) {
-  var message = name + "님 반갑습니다.";
-  
-  //클로저 만들기
-  var f = function() {
-    console.log(message);//클로저에서 바깥 함수의 변수를 사용하기
-  }
-  
-  return f;
-} 
-
-var test1 = createGreetin("홍길동");
-var test2 = createGreetin("임꺽정");
-
+//
 function closureMaker(fnType, count) { // 잊지말라 파라미터도 로컬 변수이다.
 	switch (fnType) {
 	case "sum":

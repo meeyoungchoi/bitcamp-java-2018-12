@@ -28,9 +28,9 @@
   - Functions(fn) : http://java.sun.com/jsp/jstl/functions
 - JSP 페이지에서 JSTL 라이브러리의 모듈 사용하기
   - JSTL 모듈의 네임스페이스를 가져온다.
-      &lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   - JSTL 태그 사용
-      &lt;접두어명:태그명 속성="값" 속성="값"/> 
+      <접두어명:태그명 속성="값" 속성="값"/> 
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -38,14 +38,14 @@
 <h2>오호라!!!</h2>
 
 <%
-out.println("<h2>오호라</h2>");
+out.println("<h2>오호라!!!</h2>");
 %>
 
-<%="<h2>오호라!!</h2>" %>
+<%="<h2>오호라!!!</h2>"%>
 
 ${"<h2>오호라!!!</h2>"}
 
-<c:out value="<h2>오호라!!!&lt;<h2>"/>
+<c:out value="<h2>오호라!!!<h2>"/>
 
 </body>
 </html>

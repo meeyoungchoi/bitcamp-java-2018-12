@@ -1,47 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원 검색</title>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="${contextRootPath}/css/common.css">
+  <title>회원 목록</title>
+  <jsp:include page="../commonCss.jsp"/>
 </head>
 <body>
   <jsp:include page="../header.jsp" />
+  
+  <div class="container">
+  
+    <h1>회원 목록</h1>
+    
+    <p>
+      <a href='form' class="btn btn-primary btn-sm">회원가입</a>
+    </p>
+    
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">번호</th>
+          <th scope="col">이름</th>
+          <th scope="col">이메일</th>
+          <th scope="col">전화번호</th>
+          <th scope="col">생성일</th>
+        </tr>
+      </thead>
+      <c:forEach items="${list}" var="member">
+      <tr>
+        <th scope="row">${member.no}</th>
+        <td><a href='${member.no}' class="alert-link">${member.name}</a></td>
+        <td>${member.email}</td>
+        <td>${member.tel}</td>
+        <td>${member.registeredDate}</td>
+      </tr>
+      </c:forEach>
+    </table>
+  
+    <form action='search' class="form-inline my-2 my-lg-0 justify-content-center">
+      <input name='search' class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="검색">
+      <button class="btn btn-outline-success my-2 my-sm-0">검색</button>
+    </form>
 
-<div class="container">
-  <h1>회원 검색</h1>
-  <c:choose>
-  <c:when test="${empty member}">
-  <p>해당하는 회원이 없습니다.</p>
-</c:when>
-<c:otherwise>
-   <form action='search' method='post' enctype='multipart/form-data'>
-    <div class="form-group row">
-      <label for="no" class="col-sm-2 col-form-label">번호</label>
-      <div class="col-sm-10">
-      <input type="text" class="form-control-plaintext" id="no" 
-             name='no' value='${member.no}' >
-                <label for="name" class="col-sm-2 col-form-label">이름</label>
-      <div class="col-sm-10">
-      <input type="text" class="form-control-plaintext" id="name" 
-             name='name' value='${member.name}' >
-    </div>
-  </div>
-<c:forEach items="${list}" var="member">
-    <tr>
-      <td>${member.no}</td>
-      <td><a href='detail?no=${member.no}'>${member.name}</a></td>
-      <td>${member.email}</td>
-      <td>${member.tel}</td>
-      <td>${member.registeredDate}</td>
-    </tr>
-</c:forEach>
-  </table>
-  <p>
-    <a href='.'>목록</a>
-  </p>
+  </div> <!-- .container -->
+  <jsp:include page="../javascript.jsp"/>
 </body>
+
 </html>

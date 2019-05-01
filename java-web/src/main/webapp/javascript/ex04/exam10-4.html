@@ -16,7 +16,7 @@ function createScore(name, kor, eng, math) {
 	obj.kor = kor;
 	obj.eng = eng;
 	obj.math = math;
-	obj.sum = function() { //인스턴스의 멤버를 가리킬때는 this를 생략할수 없다.
+	obj.sum = function() { 
 		return this.kor + this.eng + this.math;
 	};
 	obj.aver = function() { 

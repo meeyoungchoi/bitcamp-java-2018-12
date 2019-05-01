@@ -7,7 +7,7 @@
 <body>
 <h1>변수 - 글로벌 변수와 로컬 변수 구분</h1>
 <script>
-
+"use strict"
 
 var v1 = "홍길동";
 
@@ -20,7 +20,7 @@ function f1() {
     
     // 그런데 로컬 변수와 이름이 같은 글로벌 변수를 사용하고 싶다면? 
     // window를 생략하지 말라!
-    window.v1 = "임꺽정";//글로벌 변수
+    window.v1 = "임꺽정";
     
     console.log("f1():", v1, window.v1);
 }

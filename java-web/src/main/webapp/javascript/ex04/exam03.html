@@ -13,7 +13,7 @@
 var obj = new Object();
 
 obj.name = "홍길동";
-obj.f1 = () => console.log("f1()....");//?
+obj.f1 = () => console.log("f1()....");
 
 var obj2 = new Object();
 obj2.v1 = 100;
@@ -28,10 +28,10 @@ obj.other = obj2;
 console.log(obj.name);
 console.log(obj.other.v1);
 console.log(obj.other.v2);
-console.log(obj.other.v3);//객채.객체.프로퍼티 ognl(object graph navigation language) 표기법
+console.log(obj.other.v3);
 
 // 객체의 함수 호출
-obj.f1();//?
+obj.f1();
 obj.other.v4();
 
 </script>

@@ -13,14 +13,11 @@
         대상자:상태명 {...}
         대상자[속성명] {...}
    */
+  div:first-child {
+    border: 1px dashed blue;
+  }
 
-   div:first-child {
-     border: 1px dashed blue
-   }
-
-/*자기 자식이 그 부모의 첫번쨰 자식인 것만 선택된다.
-div라는 태그가 자기가 소속되 있는 부모에서 첫번째 자식인가 자식들 중에서 첫점째 태그이면*/
-  li:first-child { /* 자식들 중에서 부모태그로 부터 첫번째 자식인 경우 li */
+  li:first-child { /* 자식들 중에서 첫째인 li */
     background-color: gray;
   }
 
@@ -28,24 +25,25 @@ div라는 태그가 자기가 소속되 있는 부모에서 첫번째 자식인�
     text-decoration: underline;
   }
 
-/*한번이라도 방문한 경우*/
   a:visited {
     color: gray;
   }
 
-/*한번도 방문하지 않은경우*/
   a:link {
     color: red;
   }
 
-/*활성화된 상태*/
   a:active {
     background-color: yellow;
   }
 
-  a:focus { /* 키보드 입력을 받을 수 있는 상태 */
-  border: 2px inset gray;
-    background-color:  yellowgreen;
+  a:focus {
+    border: 2px inset gray;
+    font-size: 150%;
+  }
+
+  input:focus { /* 키보드 입력을 받을 수 있는 상태 */
+    background-color: green;
   }
 
   button:focus {
@@ -55,7 +53,6 @@ div라는 태그가 자기가 소속되 있는 부모에서 첫번째 자식인�
   </style>
 </head>
 <body>
-
   <p>ok</p>
   <div id="menu">
   <img src='http://bitcamp.co.kr/resources/images/logo/head_logo.gif'>

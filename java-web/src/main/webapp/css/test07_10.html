@@ -13,8 +13,8 @@
   */
   /* 웹에서 다운로드 하는 폰트는 별도로 선언하고 써야 한다.*/
   @font-face {
-    font-family: "myfont"; /* 폰트 그룹명을 설정한다. woff를 지금부터 myfont라고 부르겟다고 정의한다. */
-    src: url('icons.woff') format('woff'); /*어떤 폰트를 사용할건지를 다운받고 형식을 지정한다.*/
+    font-family: "myfont"; /* 폰트 그룹명을 설정한다. */
+    src: url('icons.woff') format('woff');
   }
 
   #state {
@@ -34,7 +34,7 @@
 <body>
 <form>
 <div id="d1">이메일: <input id="email" type="text">
-  <div id="state"></div></div>
+  <div id="state">홍</div></div>
 <div>암호: <input id="pwd" type="password"></div>
 <div><button id="signupBtn" type="button">회원가입</button></div>
 </form>
@@ -51,18 +51,14 @@ btn.addEventListener('click', function() {
   // 입력 상자에 들어있는 값을 검사하여 이메일 중복 여부에 따라
   // 아이콘을 출력한다.
   if (email.value == "hong@test.com") { // 존재하는 사용자일 경우
-   // state.innerHTML = "&#61453;"; /*div 안에 텍스트를 출력할때*/
-   state.innerHTML = "o"; //시작태그와끝태그 사잉에 값을 넣고 싶을 때는 innerHTML을 사용한다.
-   //state.innerHTML = "&#XAC02";//html에 미리 정의된 상수 값(html character entity)
-   //10진수 
-   //state.innerHTML= "까";
-   //state.innerHTML= "\uac02"; //이스케이프(escape) 문자를 사용하여 지정하기
-   //자바스크립트에서 각 이라흔ㄴ 글자를 그대로 꼽는다. 단 웹브라우저가 출력할 때 각이라는 글자로 출력한다.
-   
+    //state.innerHTML = "가";
+    //state.innerHTML = "\uac01"; // 이스케이프(escape) 문자를 사용하여 지정하기
+    //state.innerHTML = "&#xac02;"; // HTML에 미리 정의된 상수 값(html character entity)
+    //state.innerHTML = "&#44036;"; // 10진수 html character entity 값
+    state.innerHTML = "&#61453;"; // 
     state.style["color"] = "#ff0000";
   } else {
-    //state.innerHTML = "&#61452;";
-    state.innerHTML = "x";
+    state.innerHTML = "&#61452;";
     state.style.color = "#0000ff";
   }
 

@@ -30,9 +30,6 @@ public class Servlet03 extends HttpServlet {
       throws ServletException, IOException {
     System.out.println("Servlet03.doGet(ServletRequest,ServletResponse)");
   }
-  
-  
-  
 }
 
 

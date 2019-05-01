@@ -26,7 +26,7 @@ pageContext.setAttribute("names", new String[]{"홍길동", "임꺽정", "유관
 
 <ul>
 <c:forEach items="${pageScope.names}" var="n">
-    <li>${n}</li> <%--pageContext에 저장된 n --%>
+    <li>${n}</li>
 </c:forEach>
 </ul>
 
@@ -58,7 +58,7 @@ pageContext.setAttribute("names3", names3);
 <%-- Map 객체에 대해 반복문을 돌리면 var로 저장하는 것은 
      key와 value를 갖고 있는 Entry 객체이다. --%>
 <c:forEach items="${pageScope.names3}" var="n">
-    <li>${n.key} : ${n.value}</li> <%--entity에서 key값을 꺼낸고 entity에서 value값을 꺼낸다. --%>
+    <li>${n.key} : ${n.value}</li>
 </c:forEach>
 </ul>
 
@@ -69,7 +69,7 @@ pageContext.setAttribute("names4", "홍길동,임꺽정,유관순,김구");
 
 <ul>
 <c:forEach items="${pageScope.names4}" var="n">
-    <li>${n}</li> <%--콤마을 기준으로 자동으로 짤라서 실행한다. --%>
+    <li>${n}</li>
 </c:forEach>
 </ul>
 </body>

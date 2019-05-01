@@ -20,7 +20,7 @@ map.put("s03", "윤봉길");
 pageContext.setAttribute("map", map);
 %>
 
-${pageScope.map["s01"]}<br>
+${map["s01"]}<br>
 ${map['s01']}<br>
 ${map.s01}<br>
 </body>

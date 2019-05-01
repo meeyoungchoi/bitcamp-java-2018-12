@@ -33,8 +33,8 @@
 <pre>
 var 속성으로 변수이름을 설정하면, 조건문의 테스트 결과는 지정된 이름으로 보관소에 저장된다.
 </pre>
-<c:if test="${gender == 'woman'}" var="r1"/> <%--test결과가 turue 인지 false인지 저장하고 싶을 때 --%>
-<%--r1이라는 이름으로 pageContext에 보관된다. --%>
+<c:if test="${gender == 'woman'}" var="r1"/>
+
 ${pageScope.r1 ? "여성" : "남성"}<br>
 
 </body>

@@ -26,10 +26,11 @@ document.querySelector("#btn1").onclick = () => {
     // => 일반적인 form 데이터의 형식(이름=값&이름=값&...)은 다음과 같이 MIME 타입을 선언해야 한다.
     //    "application/x-www-form-urlencoded"
     //
-    xhr.setRequestHeader("Content-Type", 
+    xhr.setRequestHeader(
+        "Content-Type", 
         "application/x-www-form-urlencoded");
     
-    var data ="name="+window.encodeURIComponent("홍길동")+ "&age=20";
+    var data = "name=" + window.encodeURIComponent("홍길동") + "&age=20";
     console.log(data);
     
     xhr.send(data);

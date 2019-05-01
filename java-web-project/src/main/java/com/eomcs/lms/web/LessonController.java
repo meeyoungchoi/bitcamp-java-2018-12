@@ -45,7 +45,7 @@ public class LessonController {
 
   @GetMapping
   public String list(Model model) {
-    List<Lesson> lessons = lessonService.list(0, 0);
+    List<Lesson> lessons = lessonService.list();
     model.addAttribute("list", lessons);
     return "lesson/list";
   }

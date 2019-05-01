@@ -20,7 +20,6 @@
 pageContext.setAttribute("today", new Date());
 %>
 
-<%--날짜 객체를 문자열로 치환 --%>
 <fmt:formatDate value="${pageScope.today}" 
     pattern="yyyy-MM-dd"/><br>
 <fmt:formatDate value="${pageScope.today}" 
@@ -30,7 +29,7 @@ pageContext.setAttribute("today", new Date());
     
 <fmt:formatDate value="${pageScope.today}" 
     pattern="yyyy-MM-dd"
-    var="str1"/> <%--pageContext에 값이 보관된다. --%>
+    var="str1"/>
     
 <p>오늘 날짜는 '${pageScope.str1}'입니다.</p>    
         
